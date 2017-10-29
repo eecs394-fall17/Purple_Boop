@@ -3,13 +3,24 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Select Color</ion-title>
+    <ion-title>1. Select Color</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex}">
+  <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex, 'border-color':this.borderColors[color.hex.substring(1)]}" (click)="onClick(color)" [ngClass]="{'selected':(color===selectedColor)}">
     <div class="card-title">{{color.name}}</div>
   </ion-card>
-
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar *ngIf="selectedColor">
+    <ion-buttons end>
+    	<button ion-button icon-right color="royal" (click)='onClickContinue()'>
+    		<ion-icon ios="ios-square" md="md-square" style="margin-right:5px;" [ngStyle]="{'color':selectedColor.hex}"></ion-icon>
+    		Continue
+    		<ion-icon name="send"></ion-icon>
+		</button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-footer>	

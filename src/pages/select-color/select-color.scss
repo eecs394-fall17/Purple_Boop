@@ -1,7 +1,13 @@
 ion-card {
   position: relative;
   text-align: center;
-  height:50px;
+  height:150px;
+  transition: border .1s;
+  &.selected{
+    border-width: 5px;
+    border-style:solid;
+    transition: border .1s;
+  }
 }
 
 .card-title {
@@ -11,4 +17,13 @@ ion-card {
   width: 100%;
   font-weight: bold;
   color: #fff;
+}
+
+#color-panel{
+  border:1px solid red;
+  background-color:yellow;
+}
+
+ion-toolbar{
+  transition: height 2s, opacity 2s !important;
 }
