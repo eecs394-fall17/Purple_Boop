@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Select Color</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex}">
+    <div class="card-title">{{color.name}}</div>
+  </ion-card>
+
+</ion-content>
