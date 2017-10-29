@@ -1,0 +1,28 @@
+<!-- THIS IS STILL A DUMMY PAGE -->
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>2. Select Texture</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let texture of textures" (click)="onClick(texture)" [ngClass]="{'selected':(texture===selectedTexture)}">
+    <div class="card-title">{{texture.name}}</div>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar *ngIf="selectedTexture">
+    <ion-buttons end>
+    	<button ion-button icon-right color="royal" (click)='onClickContinue()'>
+    		<ion-icon ios="ios-square" md="md-square" style="margin-right:5px;"></ion-icon>
+    		Continue
+    		<ion-icon name="send"></ion-icon>
+		</button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-footer>	
