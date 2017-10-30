@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, NavController } from 'ionic-angular';
+import { Nav, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabaseModule, AngularFireDatabase,AngularFireObject } from 'angularfire2/database';
-
+import { DiagnosisPage } from '../diagnosis/diagnosis';
 import * as _ from 'lodash';
 
 @Component({
@@ -14,13 +14,17 @@ export class SelectTexturePage {
 	
 	textures: Array<any>;
 	selectedTexture: any = null;
+	selectedColorHex:string;
+	borderColor:string;
 
-	constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
-		// db.list<any>('/Textures').valueChanges().subscribe(_rawtextures=>
-		// {
-		// 	this.textures = _rawtextures;
-		// 	console.log("_rawtextures is: ", _rawtextures);
-		// })
+	constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
+		this.selectedColorHex = navParams.get("selectedColor");
+		this.borderColor = navParams.get("borderColor");
+		db.list<any>('/Textures/'+this.selectedColorHex.substring(1)).valueChanges().subscribe(_rawtextures=>
+		{
+			this.textures = _rawtextures;
+			console.log("_rawtextures is: ", _rawtextures);
+		})
 	}
 
 	onClick(texture){
@@ -28,6 +32,6 @@ export class SelectTexturePage {
 	}
 
 	onClickContinue(){
-	    // this.navi.setRoot(page.component, {boardId: page.params.bid, title:page.title});
+	    this.navCtrl.setRoot(DiagnosisPage, {selectedColor:this.selectedColorHex});
 	}
 }

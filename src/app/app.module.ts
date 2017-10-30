@@ -9,6 +9,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
 import { SelectColorPage } from '../pages/select-color/select-color';
+import { SelectTexturePage } from '../pages/select-texture/select-texture';
 import { DiagnosisPage } from '../pages/diagnosis/diagnosis';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,6 +19,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     SelectColorPage,
+    SelectTexturePage,
     DiagnosisPage
   ],
   imports: [
@@ -31,6 +33,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     SelectColorPage,
+    SelectTexturePage,
     DiagnosisPage
   ],
   providers: [

@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabaseModule, AngularFireDatabase,AngularFireObject } from 'angularfire2/database';
-import { DiagnosisPage } from '../diagnosis/diagnosis';
+import { SelectTexturePage } from '../select-texture/select-texture';
 import * as _ from 'lodash';
 
 @Component({
@@ -49,6 +49,6 @@ export class SelectColorPage {
 	}
 
 	onClickContinue(){
-	    this.navCtrl.setRoot(DiagnosisPage, {selectedColor:this.selectedColor.hex});
+	    this.navCtrl.setRoot(SelectTexturePage, {selectedColor:this.selectedColor.hex, borderColor:this.getBorderColor(this.selectedColor.hex)});
 	}
 }

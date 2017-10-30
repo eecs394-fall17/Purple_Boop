@@ -9,17 +9,22 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-card *ngFor="let texture of textures" (click)="onClick(texture)" [ngClass]="{'selected':(texture===selectedTexture)}">
-    <div class="card-title">{{texture.name}}</div>
+<ion-content [ngClass]="{'addMargin':selectedTexture}" padding>
+  <ion-card *ngFor="let texture of textures" (click)="onClick(texture)" [ngStyle]="{'background-color':selectedColorHex, 'border-color':borderColor}" [ngClass]="{'selected':(texture===selectedTexture)}">
+    <div class="card-title">{{texture}}</div>
   </ion-card>
+
+  <ion-card id="noMatch" (click)="onClick('no match')" [ngClass]="{'selected':('no match'===selectedTexture)}">
+    <div class="card-title">None of the above</div>
+  </ion-card>
+
 </ion-content>
 
 <ion-footer>
   <ion-toolbar *ngIf="selectedTexture">
     <ion-buttons end>
     	<button ion-button icon-right color="royal" (click)='onClickContinue()'>
-    		<ion-icon ios="ios-square" md="md-square" style="margin-right:5px;"></ion-icon>
+    		<!-- <ion-icon ios="ios-square" md="md-square" style="margin-right:5px;"></ion-icon> -->
     		Continue
     		<ion-icon name="send"></ion-icon>
 		</button>
