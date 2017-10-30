@@ -6,15 +6,15 @@
     <ion-title>Diagnosis</ion-title>
   </ion-navbar>
 </ion-header>
-
+ 
 <ion-content padding>
   <div id="content-holder">
     <span *ngIf="severity==='Green'">
-  	   <ion-icon id="green" ios="ios-checkmark-circle" md="md-checkmark-circle"></ion-icon>
-       <h3>All good!</h3>
+      <ion-icon id="green" ios="ios-checkmark-circle" md="md-checkmark-circle"></ion-icon>
+      <h3>All good!</h3>
     </span>
     <span *ngIf="severity==='Yellow'">
-    	<ion-icon id="yellow" ios="ios-remove-circle" md="md-remove-circle"></ion-icon>
+      <ion-icon id="yellow" ios="ios-remove-circle" md="md-remove-circle"></ion-icon>
       <h3>Be careful!</h3>
     </span>
     <span *ngIf="severity==='Red'">

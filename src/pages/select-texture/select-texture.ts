@@ -32,6 +32,8 @@ export class SelectTexturePage {
 	}
 
 	onClickContinue(){
-	    this.navCtrl.setRoot(DiagnosisPage, {selectedColor:this.selectedColorHex});
+	    this.navCtrl.push(DiagnosisPage, {selectedColor:this.selectedColorHex});
 	}
+
+	
 }

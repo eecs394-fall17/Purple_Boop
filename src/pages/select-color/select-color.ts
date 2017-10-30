@@ -23,12 +23,15 @@ export class SelectColorPage {
 			this.colors = _rawcolors;
 			this.setBorderColors(this.colors);
 		})
+
+		//this.navCtrl.setRoot(SelectColorPage);
 	}
 
 	onClick(color){
 		this.selectedColor= (this.selectedColor===color)?null:color;
 	}
 
+	
 	setBorderColors(_colors){
 		_.map(_colors, color=>{ 
 			this.borderColors[color.hex.substring(1)]=this.getBorderColor(color.hex);
@@ -46,9 +49,13 @@ export class SelectColorPage {
 			default:
 				return hex;
 		}
-	}
+	} 
 
 	onClickContinue(){
-	    this.navCtrl.setRoot(SelectTexturePage, {selectedColor:this.selectedColor.hex, borderColor:this.getBorderColor(this.selectedColor.hex)});
+	    this.navCtrl.push(SelectTexturePage, {selectedColor:this.selectedColor.hex, borderColor:this.getBorderColor(this.selectedColor.hex)});
 	}
+
+	
+
+	
 }
