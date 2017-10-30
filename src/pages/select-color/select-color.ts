@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Nav, NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabaseModule, AngularFireDatabase,AngularFireObject } from 'angularfire2/database';
-
+import { SelectTexturePage } from '../select-texture/select-texture';
 import * as _ from 'lodash';
 
 @Component({
@@ -10,23 +10,45 @@ import * as _ from 'lodash';
   templateUrl: 'select-color.html'
 })
 export class SelectColorPage {
+	// @ViewChild(Nav) navi: Nav;
 	// colors: Array<{hex:string, name:string}>;
 	// selectedColor: {hex:string, name:string};
 	colors: Array<any>;
-	selectedColor: any;
-
-	raw_colors: AngularFireObject<any[]>;
+	selectedColor: any = null;
+	borderColors = {}; //Note the key has no # but the result does.
 
 	constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
 		db.list<any>('/Colors').valueChanges().subscribe(_rawcolors=>
 		{
 			this.colors = _rawcolors;
-			console.log("_rawcolors is: ", _rawcolors);
+			this.setBorderColors(this.colors);
 		})
 	}
 
-	onClick(event){
-		console.log("onClick with event:", event);
+	onClick(color){
+		this.selectedColor= (this.selectedColor===color)?null:color;
 	}
 
+	setBorderColors(_colors){
+		_.map(_colors, color=>{ 
+			this.borderColors[color.hex.substring(1)]=this.getBorderColor(color.hex);
+		});
+	}
+
+	getBorderColor(hex){
+		switch(hex){
+			case("#48A774"):
+				return "#289754";
+			case("#882119"):
+				return "#660109";
+			case("#F5D88E"):
+				return "#D5A85E";
+			default:
+				return hex;
+		}
+	}
+
+	onClickContinue(){
+	    this.navCtrl.setRoot(SelectTexturePage, {selectedColor:this.selectedColor.hex, borderColor:this.getBorderColor(this.selectedColor.hex)});
+	}
 }

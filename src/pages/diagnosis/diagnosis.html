@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Diagnosis</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="content-holder">
+    <span *ngIf="severity==='Green'">
+  	   <ion-icon id="green" ios="ios-checkmark-circle" md="md-checkmark-circle"></ion-icon>
+       <h3>All good!</h3>
+    </span>
+    <span *ngIf="severity==='Yellow'">
+    	<ion-icon id="yellow" ios="ios-remove-circle" md="md-remove-circle"></ion-icon>
+      <h3>Be careful!</h3>
+    </span>
+    <span *ngIf="severity==='Red'">
+      <ion-icon id="red" ios="ios-close-circle" md="md-close-circle"></ion-icon>
+      <h3>Uh-oh!</h3>
+    </span>
+    <p id="diagnosis-text">{{text}}</p>
+  </div>
+</ion-content>

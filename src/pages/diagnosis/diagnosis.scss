@@ -1,0 +1,62 @@
+@import "../../app/app";
+
+ion-header{
+	ion-navbar{
+		.toolbar-background-md{
+			// background-color: #B9D9C3;
+			background-color: #4D648D; //Yes
+			// background-color: #D0E1F9;
+		}
+		div.toolbar-content{
+			ion-title{
+				.toolbar-title-md{
+					color: white;
+				}
+			}
+		}
+	}
+}
+
+ion-content.content-md{
+	background-color: #F69454; //Yes
+	// background-color: #FBCB7B;
+	// background-color: #FFCCAC;
+}
+
+#content-holder{
+	// display:table-cell;
+	// vertical-align: middle;
+	text-align:center;
+	background-color:#fafafa;
+	border: 4px solid #dedede;
+	ion-icon{
+		font-size: 196px;
+		&#green{
+			color:#3ed96a;
+		}
+		&#yellow{
+			color:#FEC03C;
+		}
+		&#red{
+			color:#f24044;
+		}
+	}
+	h3{
+		font-size:4.8rem;
+		font-family: 'Raleway', sans-serif;
+		color:#393939;
+	}
+	#diagnosis-text{
+		padding: 14px 10px 30px;
+		color:#333333;
+		font-size: 1.9rem;
+		font-family: 'Open Sans', sans-serif;
+		text-align:center;
+		margin:0px;
+	}
+}
+
+div.scroll-content{
+	height:calc(100%-56px);
+	// display:table;
+}
