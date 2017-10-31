@@ -2,30 +2,51 @@
 
 ion-header{
 	ion-navbar{
-		.toolbar-background-md{
-			// background-color: #B9D9C3;
-			background-color: #4D648D; //Yes
-			// background-color: #D0E1F9;
+		.toolbar-background{
+			background-color: #4D648D !important;
 		}
-		div.toolbar-content{
+		.toolbar-content{
 			ion-title{
-				.toolbar-title-md{
-					color: white;
+				.toolbar-title{
+					color: white !important;
 				}
 			}
 		}
 	}
 }
 
-ion-content.content-md{
-	background-color: #F69454; //Yes
-	// background-color: #FBCB7B;
-	// background-color: #FFCCAC;
+ion-content.content{
+	background-color: #F69454 !important;
+	&.addMargin{
+		&.content-ios{
+			.fixed-content, .scroll-content{
+			    margin-bottom:44px; 
+			}
+		}
+		&.content-md{
+			.fixed-content, .scroll-content{
+			    margin-bottom:56px; 
+			}
+		}
+	}
+	&:not(.addMargin){
+		.fixed-content, .scroll-content{
+			margin-bottom:0px;
+		}
+	}
+	&.content-ios{
+		div.scroll-content{
+			height:calc(100%-44px);
+		}
+	}
+	&.content-md{
+		div.scroll-content{
+			height:calc(100%-56px);
+		}
+	}
 }
 
 #content-holder{
-	// display:table-cell;
-	// vertical-align: middle;
 	text-align:center;
 	background-color:#fafafa;
 	border: 4px solid #dedede;
@@ -54,9 +75,4 @@ ion-content.content-md{
 		text-align:center;
 		margin:0px;
 	}
-}
-
-div.scroll-content{
-	height:calc(100%-56px);
-	// display:table;
 }
