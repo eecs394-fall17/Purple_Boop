@@ -24,7 +24,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: '',
+      iconMode: 'ios',
+      modalEnter: 'modal-slide-in',
+      modalLeave: 'modal-slide-out',
+      tabsPlacement: 'bottom',
+      pageTransition: 'ios-transition'
+    },
+  ),
     AngularFireModule.initializeApp(environment.firebase, 'boop'),
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule
