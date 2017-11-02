@@ -3,6 +3,7 @@ import { Nav, NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabaseModule, AngularFireDatabase,AngularFireObject } from 'angularfire2/database';
 import { SelectTexturePage } from '../select-texture/select-texture';
+import { DiagnosisPage } from '../diagnosis/diagnosis';
 import * as _ from 'lodash';
 
 @Component({
@@ -42,25 +43,25 @@ export class SelectColorPage {
 
 	getBorderColor(hex){
 		switch(hex){
-			case("#474A14"):
-				return "#289754";
-			case("#F5D88E"):
+			case("#474a14"):
+				return "#2a2e01";
+			case("#f5d88e"):
 				return "#E5B86E";
-			case("#D1C295"):
+			case("#d1c295"):
 				return "#B1A175";
-			case("#755E19"):
+			case("#755e19"):
 				return "#533E01";
 			case("#745426"):
 				return "#534214";
-			case("#284B2C"):
+			case("#284b2C"):
 				return "#183211";
-			case("#48A774"):
+			case("#48a774"):
 				return "#289754";
 			case("#882119"):
 				return "#680302";
-			case("#F6F6F6"):
+			case("#f6f6f6"):
 				return "#DEDEDE";
-			case("#3F2A04"):
+			case("#3f2a04"):
 				return "#211104";
 			default:
 				return hex;
@@ -83,7 +84,8 @@ export class SelectColorPage {
 	} 
 
 	onClickContinue(){
-	    this.navCtrl.push(SelectTexturePage, {selectedColor:this.selectedColor.hex, borderColor:this.getBorderColor(this.selectedColor.hex)});
+	    // this.navCtrl.push(SelectTexturePage, {selectedColor:this.selectedColor.hex, borderColor:this.getBorderColor(this.selectedColor.hex)});
+	    this.navCtrl.push(DiagnosisPage, {selectedColor:this.selectedColor.hex});
 	}
 
 	
