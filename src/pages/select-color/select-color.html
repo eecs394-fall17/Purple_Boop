@@ -9,7 +9,7 @@
 
 <ion-content [ngClass]="{'addMargin':selectedColor}"  padding>
   <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex, 'border-color':this.borderColors[color.hex.substring(1)]}" (click)="onClick(color)" [ngClass]="{'selected':(color===selectedColor)}">
-    <div class="card-title">{{color.name}}</div>
+    <div class="card-title" [ngStyle]="{'color':this.fontColors[color.hex.substring(1)]}">{{color.name}}</div>
   </ion-card>
 </ion-content>
 
