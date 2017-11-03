@@ -3,6 +3,7 @@ ion-card {
   text-align: center;
   height:150px;
   transition: border .1s;
+  margin-bottom:20px;
   &.selected{
     border-width: 5px;
     border-style:solid;
