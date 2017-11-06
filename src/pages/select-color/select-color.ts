@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabaseModule, AngularFireDatabase,AngularFireObject } from 'angularfire2/database';
 import { SelectTexturePage } from '../select-texture/select-texture';
 import { DiagnosisPage } from '../diagnosis/diagnosis';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
 import * as _ from 'lodash';
 
 @Component({
@@ -18,8 +20,10 @@ export class SelectColorPage {
 	selectedColor: any = null;
 	borderColors = {}; //Note the key has no # but the result does.
 	fontColors = {}; //Note the key has no # but the result does.
+	public base64Image: string;
 
-	constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
+
+	constructor(public navCtrl: NavController, public db: AngularFireDatabase, private camera: Camera) {
 		db.list<any>('/Colors').valueChanges().subscribe(_rawcolors=>
 		{
 			this.colors = _.sortBy(_rawcolors, "no");			
@@ -30,8 +34,28 @@ export class SelectColorPage {
 		//this.navCtrl.setRoot(SelectColorPage);
 	}
 
+	private options: CameraOptions = {
+	  quality: 50,
+	  destinationType: this.camera.DestinationType.DATA_URL,
+	  encodingType: this.camera.EncodingType.JPEG,
+	  mediaType: this.camera.MediaType.PICTURE
+	}
+
+	takePicture(){
+		this.camera.getPicture(this.options).then((imageData) => {
+			this.base64Image = "data:image/jpeg;base64,"+imageData;
+		}, (err) => {
+			console.log(err);
+		})
+	}
+
 	onClick(color){
 		this.selectedColor= (this.selectedColor===color)?null:color;
+	}
+
+	onClickCamera(){
+		// this.navCtrl.push(CameraPage);
+		this.takePicture();
 	}
 
 	
