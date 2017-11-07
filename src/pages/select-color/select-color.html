@@ -11,9 +11,11 @@
 
 <ion-content [ngClass]="{'addMargin':selectedColor}"  padding>
   
-  <!-- For illustration/testing purposes only:
+  <!-- For illustration/testing purposes only: -->
   <img [src]="base64Image" *ngIf="base64Image"/>
-  <p>base64Image is: {{base64Image}}</p> -->
+  <p>base64Image is: {{base64Image}}</p>
+  <p>omarsTest is: {{omarsTest}}</p>
+  <p>DominantColor is: {{dominantColor}}</p>
 
   <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex, 'border-color':this.borderColors[color.hex.substring(1)]}" (click)="onClick(color)" [ngClass]="{'selected':(color===selectedColor)}">
     <div class="card-title" [ngStyle]="{'color':this.fontColors[color.hex.substring(1)]}">{{color.name}}</div>

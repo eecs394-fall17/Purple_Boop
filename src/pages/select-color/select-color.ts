@@ -5,8 +5,10 @@ import { AngularFireDatabaseModule, AngularFireDatabase,AngularFireObject } from
 import { SelectTexturePage } from '../select-texture/select-texture';
 import { DiagnosisPage } from '../diagnosis/diagnosis';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Crop } from '@ionic-native/crop';
 
 import * as _ from 'lodash';
+import * as _colorThief from 'color-thief';
 
 @Component({
   selector: 'page-select-color',
@@ -21,29 +23,37 @@ export class SelectColorPage {
 	borderColors = {}; //Note the key has no # but the result does.
 	fontColors = {}; //Note the key has no # but the result does.
 	public base64Image: string;
+	omarsTest:any;
+	dominantColor:any;
+	colorThief:any;
 
-
-	constructor(public navCtrl: NavController, public db: AngularFireDatabase, private camera: Camera) {
+	constructor(public navCtrl: NavController, public db: AngularFireDatabase, private camera: Camera, private crop:Crop) {
 		db.list<any>('/Colors').valueChanges().subscribe(_rawcolors=>
 		{
 			this.colors = _.sortBy(_rawcolors, "no");			
 			this.setBorderColors(this.colors);
 			this.setFontColors(this.colors);
-		})
+		});
+		this.colorThief = new _colorThief();
+		this.omarsTest = this.colorThief.omarsTest;
+		this.colorThief.omarsAlert();
 
 		//this.navCtrl.setRoot(SelectColorPage);
 	}
 
+	// Play with destinationType: .DATA_URL, .FILE_URI, .NATIVE_URI
 	private options: CameraOptions = {
+	  allowEdit:true,
 	  quality: 50,
-	  destinationType: this.camera.DestinationType.DATA_URL,
+	  destinationType: this.camera.DestinationType.FILE_URI,
 	  encodingType: this.camera.EncodingType.JPEG,
 	  mediaType: this.camera.MediaType.PICTURE
 	}
 
 	takePicture(){
 		this.camera.getPicture(this.options).then((imageData) => {
-			this.base64Image = "data:image/jpeg;base64,"+imageData;
+			this.base64Image = imageData;
+			this.dominantColor = this.colorThief.getColor(imageData);
 		}, (err) => {
 			console.log(err);
 		})
@@ -54,7 +64,6 @@ export class SelectColorPage {
 	}
 
 	onClickCamera(){
-		// this.navCtrl.push(CameraPage);
 		this.takePicture();
 	}
 
