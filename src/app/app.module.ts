@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Camera } from '@ionic-native/camera';
 
@@ -16,6 +16,9 @@ import { DiagnosisPage } from '../pages/diagnosis/diagnosis';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,6 +28,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       iconMode: 'ios',
@@ -48,6 +52,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFireDatabase,
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
