@@ -45,14 +45,14 @@ export class SelectColorPage {
 	private options: CameraOptions = {
 	  allowEdit:true,
 	  quality: 50,
-	  destinationType: this.camera.DestinationType.FILE_URI,
+	  destinationType: this.camera.DestinationType.DATA_URL,
 	  encodingType: this.camera.EncodingType.JPEG,
 	  mediaType: this.camera.MediaType.PICTURE
 	}
 
 	takePicture(){
 		this.camera.getPicture(this.options).then((imageData) => {
-			this.base64Image = imageData;
+			this.base64Image = "data:image/jpeg;base64"+imageData;
 			this.dominantColor = this.colorThief.getColor(imageData);
 		}, (err) => {
 			console.log(err);

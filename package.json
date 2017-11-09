@@ -28,6 +28,7 @@
     "@ionic/storage": "2.0.1",
     "angularfire2": "^5.0.0-rc.3",
     "canvas": "^2.0.0-alpha.6",
+    "canvas-base64": "^1.0.0",
     "color-thief": "^2.2.2",
     "cordova-android": "6.3.0",
     "cordova-ios": "^4.4.0",
