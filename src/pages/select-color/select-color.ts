@@ -46,7 +46,6 @@ export class SelectColorPage {
 		// let url = 'https://firebasestorage.googleapis.com/v0/b/boop-a674c.appspot.com/o/images%2F1510132118.jpg?alt=media&token=7045aa6e-2e89-4450-9326-2179d9255e05';
 		sightengine("1801151869", "bBS92aZfoXDJKm9Y3p8u").check(['properties']).set_url(url).then(function (result) {
 			//this will return a string of the dominant hex value
-			//console.log(result.colors.dominant.hex);
 			console.log("result is: ", result);
 			color = result.colors.dominant.hex;
 			return color;
@@ -55,7 +54,7 @@ export class SelectColorPage {
 			this.selectedColorHex = this.getNearestColor(work);
 			console.log("this.selectedColorHex is: ",this.selectedColorHex);
 		}).catch(function (err) {
-			console.log(err);
+			console.log("The call failed");
 		});
 	}
  
