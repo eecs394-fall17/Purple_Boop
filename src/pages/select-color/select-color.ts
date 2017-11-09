@@ -2,7 +2,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireObject,  } from 'angularfire2/database';
+import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireObject} from 'angularfire2/database';
 import { SelectTexturePage } from '../select-texture/select-texture';
 import { DiagnosisPage } from '../diagnosis/diagnosis';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -20,21 +20,18 @@ import * as sightengine from 'sightengine';
 export class SelectColorPage { 
 	// @ViewChild(Nav) navi: Nav;
 	// colors: Array<{hex:string, name:string}>;
-	// selectedColor: {hex:string, name:string};
 	colors: Array<any>;
-	selectedColor: any = null;
+	selectedColorHex: string = "";
 	borderColors = {}; //Note the key has no # but the result does.
 	fontColors = {}; //Note the key has no # but the result does.
 	public base64Image: string;
 	fireURL: string;
 	dominantColor: string;
 
-
-
-
 	constructor(public navCtrl: NavController, public db: AngularFireDatabase, private camera: Camera) {
 		db.list<any>('/Colors').valueChanges().subscribe(_rawcolors => {
 			this.colors = _.sortBy(_rawcolors, "no");
+			console.log("this.colors is: ", this.colors);
 			this.setBorderColors(this.colors);
 			this.setFontColors(this.colors);
 		})
@@ -42,26 +39,26 @@ export class SelectColorPage {
 		initializeApp(environment.firebase);
 	}
 	
-
-	
 	analyze() {
 		let color;
 		console.log("analyzing...");
-		let url = this.fireURL;
-		//url = 'https://firebasestorage.googleapis.com/v0/b/boop-a674c.appspot.com/o/images%2F1510133588.jpg?alt=media&token=cf9f3f39-e166-4de4-b0e8-111431be083b';
+		// let url = this.fireURL;
+		let url = 'https://firebasestorage.googleapis.com/v0/b/boop-a674c.appspot.com/o/images%2F1510132118.jpg?alt=media&token=7045aa6e-2e89-4450-9326-2179d9255e05';
 		sightengine("1801151869", "bBS92aZfoXDJKm9Y3p8u").check(['properties']).set_url(url).then(function (result) {
 			//this will return a string of the dominant hex value
 			//console.log(result.colors.dominant.hex);
+			console.log("result is: ", result);
 			color = result.colors.dominant.hex;
 			return color;
 		}).then((work) => {
 			this.dominantColor = work;
-			console.log(this.dominantColor);
+			this.selectedColorHex = this.getNearestColor(work);
+			console.log("this.selectedColorHex is: ",this.selectedColorHex);
 		}).catch(function (err) {
 			console.log(err);
 		});
 	}
-
+ 
 	private options: CameraOptions = {
 		quality: 50,
 		destinationType: this.camera.DestinationType.DATA_URL,
@@ -86,7 +83,6 @@ export class SelectColorPage {
 		imageRef.putString(this.base64Image, 'data_url').then(snapshot => {
 			console.log("uploading...");
 			this.fireURL = snapshot.downloadURL;
-			console.log(this.fireURL);
 			this.analyze();
 		})
 		
@@ -97,10 +93,35 @@ export class SelectColorPage {
 	}
 
 	onClick(color) {
-		this.selectedColor = (this.selectedColor === color) ? null : color;
+		this.selectedColorHex = (this.selectedColorHex === color.hex) ? null : color.hex;
 	}
 
- 
+ 	getNearestColor(inp_color){
+ 		let nearestColorHex, i, _dist;
+ 		let smallestDistance = Infinity;
+ 		for(i=0;i<this.colors.length;i++){
+ 			_dist = this.calcDistance(this.colors[i].hex,inp_color);
+ 			if(_dist<smallestDistance){
+ 				nearestColorHex = this.colors[i].hex;
+ 				smallestDistance = _dist;
+ 			}
+ 		}
+ 		return nearestColorHex;
+ 	}
+
+ 	calcDistance(color1, color2){
+ 		let _col1 = this.hex2RGB(color1), _col2 = this.hex2RGB(color2);
+ 		let _ans = _.sum(_.map(_.zip(_col1,_col2), p=> (p[1]-p[0])**2))**1/2;
+ 		return _ans;
+ 	}
+
+ 	hex2RGB(c){
+ 		if(c[0]=="#"){
+ 			c=c.substring(1);
+ 		}
+ 		let temp = ([c.substring(0,2),c.substring(2,4),c.substring(4,6)]);
+ 		return _.map(temp, t=>parseInt(t,16));
+ 	}
 
 
 	setBorderColors(_colors) {
@@ -153,10 +174,12 @@ export class SelectColorPage {
 
 	onClickContinue() {
 		// this.navCtrl.push(SelectTexturePage, {selectedColor:this.selectedColor.hex, borderColor:this.getBorderColor(this.selectedColor.hex)});
-		this.navCtrl.push(DiagnosisPage, { selectedColor: this.selectedColor.hex });
+		this.navCtrl.push(DiagnosisPage, { selectedColor: this.selectedColorHex });
 	}
 
-
+	testColor(){
+		this.selectedColorHex = "#f6f6f6"
+	}
 
 
 }

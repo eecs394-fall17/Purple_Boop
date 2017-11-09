@@ -9,30 +9,27 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content [ngClass]="{'addMargin':selectedColor}"  padding>
+<ion-content [ngClass]="{'addMargin':selectedColorHex}"  padding>
   
   <!--
     <p>For illustration/testing purposes only: </p>
   -->
   <img [src]="base64Image" *ngIf="base64Image" style="width:128px;height:128px;"/>
   <p *ngIf="dominantColor">Your dominant color is: {{dominantColor}} <ion-icon ios="ios-square" md="md-square" style="margin-right:5px;" [ngStyle]="{'color':dominantColor}"></ion-icon> </p>
-  <!--
+  
   <button block ion-button (click)='upload()'>Upload</button>
   <button block ion-button (click)='analyze()'>Analyze</button>
-  -->
-
-
-
-  <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex, 'border-color':this.borderColors[color.hex.substring(1)]}" (click)="onClick(color)" [ngClass]="{'selected':(color===selectedColor)}">
+  
+  <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex, 'border-color':this.borderColors[color.hex.substring(1)]}" (click)="onClick(color)" [ngClass]="{'selected':(color.hex===selectedColorHex)}">
     <div class="card-title" [ngStyle]="{'color':this.fontColors[color.hex.substring(1)]}">{{color.name}}</div>
   </ion-card>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar *ngIf="selectedColor">
+  <ion-toolbar *ngIf="selectedColorHex">
     <ion-buttons end>
     	<button ion-button icon-right color="royal" (click)='onClickContinue()'>
-    		<ion-icon ios="ios-square" md="md-square" style="margin-right:5px;" [ngStyle]="{'color':selectedColor.hex}"></ion-icon>
+    		<ion-icon ios="ios-square" md="md-square" style="margin-right:5px;" [ngStyle]="{'color':selectedColorHex}"></ion-icon>
     		Continue
     		<ion-icon name="arrow-forward"></ion-icon>
 		</button>

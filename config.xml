@@ -78,8 +78,9 @@
     </platform>
     <allow-navigation href="http://10.105.79.243:8100" />
     <allow-navigation href="http://192.168.1.76:8100" />
+    <allow-navigation href="http://10.105.179.138:8100" />
+    <engine name="android" spec="^6.3.0" />
     <engine name="ios" spec="^4.4.0" />
-    <engine name="android" spec="6.3.0" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
@@ -89,5 +90,4 @@
         <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value=" " />
     </plugin>
-    <allow-navigation href="http://10.105.179.138:8100" />
 </widget>
