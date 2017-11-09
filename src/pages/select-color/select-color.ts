@@ -41,20 +41,19 @@ export class SelectColorPage {
 	}
 
 	analyze() {
-		this.analyzeToast();
 		let color;
 		console.log("analyzing...");
 		let url = this.fireURL;
 		//let url = 'https://firebasestorage.googleapis.com/v0/b/boop-a674c.appspot.com/o/images%2F1510245621.jpg?alt=media&token=fbfdeafa-fea9-4da1-af80-3ec157c436ad';
 		sightengine("1801151869", "bBS92aZfoXDJKm9Y3p8u").check(['properties']).set_url(url).then(function (result) {
 			//this will return a string of the dominant hex value
-			if(result.status == "success"){
+			if (result.status == "success") {
 				console.log("result is: ", result);
 				color = result.colors.dominant.hex;
 				return color;
 			}
-			
-		}).then((work) => { 
+
+		}).then((work) => {
 			this.dominantColor = work;
 			this.selectedColorHex = this.getNearestColor(work);
 			console.log("this.selectedColorHex is: ", this.selectedColorHex);
@@ -81,7 +80,7 @@ export class SelectColorPage {
 	}
 
 	upload() {
-		
+		this.analyzeToast();
 		const rootRef = storage().ref();
 		const filename = Math.floor(Date.now() / 1000);
 		let imageRef = rootRef.child(`images/${filename}.jpg`)
@@ -96,7 +95,8 @@ export class SelectColorPage {
 
 	onClickCamera() {
 		this.flashToast();
-		this.takePicture();
+		console.log(this.navCtrl.getActive().component.name);
+
 	}
 
 	onClick(color) {
@@ -191,18 +191,31 @@ export class SelectColorPage {
 	flashToast() {
 		let toast = this.toastCtrl.create({
 			message: 'Please turn on flash for best the results',
-			duration: 3000,
-			position: 'middle'
+			position: 'top',
+			showCloseButton: true,
+			closeButtonText: "OK",
 		});
 
 		toast.present();
+
+
+
+		toast.onDidDismiss(() => {
+			if (this.navCtrl.getActive().component.name == "SelectColorPage") {
+				this.takePicture();
+			};
+		});
+
+
+
+
 	}
 
 	analyzeToast() {
 		let toast = this.toastCtrl.create({
 			message: 'Analyzing your image...',
 			duration: 3000,
-			position: 'middle'
+			position: 'top'
 		});
 
 		toast.present();
@@ -212,7 +225,7 @@ export class SelectColorPage {
 		let toast = this.toastCtrl.create({
 			message: 'Uh oh, something went wrong. Please try again.',
 			duration: 3000,
-			position: 'middle'
+			position: 'top'
 		});
 
 		toast.present();
