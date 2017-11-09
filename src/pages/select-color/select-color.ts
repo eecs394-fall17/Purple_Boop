@@ -42,17 +42,18 @@ export class SelectColorPage {
 	analyze() {
 		let color;
 		console.log("analyzing...");
-		let url = this.fireURL;
-		// let url = 'https://firebasestorage.googleapis.com/v0/b/boop-a674c.appspot.com/o/images%2F1510133588.jpg?alt=media&token=cf9f3f39-e166-4de4-b0e8-111431be083b';
-		sightengine("863327140", "uFBxk2fWCze6ED4FweFn").check(['properties']).set_url(url).then(function (result) {
+		// let url = this.fireURL;
+		let url = 'https://firebasestorage.googleapis.com/v0/b/boop-a674c.appspot.com/o/images%2F1510132118.jpg?alt=media&token=7045aa6e-2e89-4450-9326-2179d9255e05';
+		sightengine("1801151869", "bBS92aZfoXDJKm9Y3p8u").check(['properties']).set_url(url).then(function (result) {
 			//this will return a string of the dominant hex value
 			//console.log(result.colors.dominant.hex);
+			console.log("result is: ", result);
 			color = result.colors.dominant.hex;
 			return color;
 		}).then((work) => {
 			this.dominantColor = work;
 			this.selectedColorHex = this.getNearestColor(work);
-			console.log(this.dominantColor);
+			console.log("this.selectedColorHex is: ",this.selectedColorHex);
 		}).catch(function (err) {
 			console.log(err);
 		});
@@ -96,20 +97,22 @@ export class SelectColorPage {
 	}
 
  	getNearestColor(inp_color){
- 		let nearestColor, smallestDistance, i, _dist;
+ 		let nearestColorHex, i, _dist;
+ 		let smallestDistance = Infinity;
  		for(i=0;i<this.colors.length;i++){
- 			_dist = this.calcDistance(this.colors[i],inp_color);
+ 			_dist = this.calcDistance(this.colors[i].hex,inp_color);
  			if(_dist<smallestDistance){
- 				nearestColor = this.colors[i];
+ 				nearestColorHex = this.colors[i].hex;
  				smallestDistance = _dist;
  			}
  		}
- 		return nearestColor;
+ 		return nearestColorHex;
  	}
 
  	calcDistance(color1, color2){
  		let _col1 = this.hex2RGB(color1), _col2 = this.hex2RGB(color2);
- 		return _.sum(_.map(_.zip(_col1,_col2), p=> (p[1]-p[0])**2))**1/2;
+ 		let _ans = _.sum(_.map(_.zip(_col1,_col2), p=> (p[1]-p[0])**2))**1/2;
+ 		return _ans;
  	}
 
  	hex2RGB(c){
@@ -117,7 +120,7 @@ export class SelectColorPage {
  			c=c.substring(1);
  		}
  		let temp = ([c.substring(0,2),c.substring(2,4),c.substring(4,6)]);
- 		return _.map(temp, t=>parseInt(t));
+ 		return _.map(temp, t=>parseInt(t,16));
  	}
 
 
