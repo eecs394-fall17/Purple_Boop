@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-title>Select Color</ion-title>
     <ion-buttons right>
@@ -7,23 +7,65 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
+<!-- <ion-content [ngClass]="{'addMargin':selectedColorHex}"  padding> -->
+<ion-content padding>
 
-<ion-content [ngClass]="{'addMargin':selectedColorHex}"  padding>
-  
+  <ion-grid id="selectColorGrid">
+    <!-- <ion-row class="buffer"></ion-row> -->
+
+    <ion-row id="imageRow"> <!-- First partition 50% of screen  -->
+      <ion-col col-6>
+        <div>
+          <p class="instruction">Take photo</p>
+          <ion-icon padding id="camera-icon" ios="ios-camera" md="md-camera" (click)="onClickCamera()"></ion-icon>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div>
+          <p class="instruction">Upload from gallery</p>
+          <ion-icon padding ios="md-photos" (click)="onClickUpload()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="buffer">
+      <p *ngIf="dominantColor">The dominant color is: 
+        <ion-icon ios="ios-square" md="md-square" style="margin-right:5px;" [ngStyle]="{'color':dominantColor}"></ion-icon>
+      </p>
+    </ion-row>
+
+    <ion-row id="swatchesRow">
+      <ion-grid id="swatchesGrid">
+        <p class="instruction">Or select poop color</p>
+        <ion-row *ngFor="let row of colorGridRows">
+          <ion-col col-1></ion-col>
+          <ion-col *ngFor="let color of row.slice(0,1)" col-4 [ngStyle]="{'background-color':color.hex}" (click)="onClick(color)">
+          </ion-col>
+          <ion-col *ngFor="let color of row.slice(1)" col-4 offset-2 [ngStyle]="{'background-color':color.hex}" (click)="onClick(color)">
+          </ion-col>
+          <ion-col col-1></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+
+    <ion-row class="buffer"></ion-row>
+  </ion-grid>
+
   <!--
     <p>For illustration/testing purposes only: </p>
   -->
-  <img [src]="base64Image" *ngIf="base64Image" style="width:128px;height:128px;"/>
-  <p *ngIf="dominantColor">The dominant color in your picture is: <ion-icon ios="ios-square" md="md-square" style="margin-right:5px;" [ngStyle]="{'color':dominantColor}"></ion-icon> </p>
+  <!-- <img [src]="base64Image" *ngIf="base64Image" style="width:128px;height:128px;"/> -->
+  <p *ngIf="selectedColorHex">The selected color is: 
+    <ion-icon ios="ios-square" md="md-square" style="margin-right:5px;" [ngStyle]="{'color':selectedColorHex}"></ion-icon>
+  </p>
   
   <!-- <button block ion-button (click)='upload()'>Upload</button>    
    <button block ion-button (click)='analyze()'>Analyze</button> 
      -->
   
-  <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex, 'border-color':this.borderColors[color.hex.substring(1)]}" (click)="onClick(color)" [ngClass]="{'selected':(color.hex===selectedColorHex)}">
-    <div class="card-title" [ngStyle]="{'color':this.fontColors[color.hex.substring(1)]}">{{color.name}}</div>
-  </ion-card>
+  <!-- <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex}" (click)="onClick(color)" [ngClass]="{'selected':(color.hex===selectedColorHex)}"> </ion-card> -->
+
 </ion-content>
 
 <ion-footer>

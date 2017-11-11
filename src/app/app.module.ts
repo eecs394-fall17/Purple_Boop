@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Camera } from '@ionic-native/camera';
+import { Crop } from '@ionic-native/crop';
 
 import { MyApp } from './app.component';
 import { SelectColorPage } from '../pages/select-color/select-color';
@@ -54,6 +55,7 @@ import {HttpClientModule} from '@angular/common/http';
     SplashScreen,
     AngularFireDatabase,
     Camera,
+    Crop,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

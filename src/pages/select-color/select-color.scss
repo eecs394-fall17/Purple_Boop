@@ -11,9 +11,46 @@ ion-card {
   }
 }
 
-#camera-icon{
-  color:white;
-  font-size: 2.0em;
+ion-row{
+  &.buffer{
+    height:5vh;
+  }
+}
+
+.instruction{
+  color:#9F9F9F;
+}
+
+#selectColorGrid{
+  #imageRow{
+    // height:30vh;
+    ion-col{
+      text-align:center !important;
+      ion-icon{
+        font-size:30vw;
+        @media all and (max-width: 560px) {
+            font-size:30vw;
+            width: 35vw;
+        }
+        @media all and (min-width: 560px) {
+            font-size:20vw;
+            width: 22.5vw;
+        }
+        background-color:white;
+        border:1px solid #333333;
+      }
+    }
+  }
+  #swatchesRow{
+    p{
+      margin:0px auto 10px;
+    }
+    // height:50vh;
+    ion-row{
+      height:33vw;
+      padding:8px;
+    }
+  }
 }
 
 .card-title {
