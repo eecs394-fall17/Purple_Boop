@@ -45,8 +45,8 @@ export class SelectColorPage {
 
 	analyze() {
 		let color;
-		// let url = this.fireURL;
-		let url = 'https://firebasestorage.googleapis.com/v0/b/boop-a674c.appspot.com/o/images%2F1510245621.jpg?alt=media&token=fbfdeafa-fea9-4da1-af80-3ec157c436ad';
+		let url = this.fireURL;
+		// let url = 'https://firebasestorage.googleapis.com/v0/b/boop-a674c.appspot.com/o/images%2F1510245621.jpg?alt=media&token=fbfdeafa-fea9-4da1-af80-3ec157c436ad';
 		sightengine("1801151869", "bBS92aZfoXDJKm9Y3p8u").check(['properties']).set_url(url).then(function (result) {
 			//this will return a string of the dominant hex value
 			if (result.status == "success") {
