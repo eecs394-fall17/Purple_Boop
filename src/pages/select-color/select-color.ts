@@ -65,7 +65,7 @@ export class SelectColorPage {
 			return this.selectedColorHex;
 		}).then((hex)=>{
 			//console.log(this.testImage);
-			this.navCtrl.push(DiagnosisPage, { selectedColor: hex, image: this.fireURL });
+			this.navCtrl.push(DiagnosisPage, { selectedColor: this.selectedColorHex, image: this.fireURL });
 		}).catch(function (err) {
 			console.log(err);
 		});
