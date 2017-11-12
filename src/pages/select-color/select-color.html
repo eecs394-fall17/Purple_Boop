@@ -1,19 +1,18 @@
-<!-- <ion-header>
+ <ion-header>
   <ion-navbar>
-    <ion-title>Select Color</ion-title>
-    <ion-buttons right>
-      <button ion-button icon-only color="dark" (click)="onClickCamera()">
+    <ion-title>Find the Color</ion-title>
+  <!--  <ion-buttons right>
+      <button ion-button icon-only color="dark" (click)="onClickCamera()"> 
         <ion-icon id="camera-icon" ios="ios-camera" md="md-camera" (click)="onClickCamera()"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
-</ion-header> -->
+</ion-header> 
 <!-- <ion-content [ngClass]="{'addMargin':selectedColorHex}"  padding> -->
 <ion-content padding>
-
+  
   <ion-grid id="selectColorGrid">
     <!-- <ion-row class="buffer"></ion-row> -->
-
     <ion-row id="imageRow"> <!-- First partition 50% of screen  -->
       <ion-col col-6>
         <div>
@@ -57,8 +56,8 @@
     <ion-icon ios="ios-square" md="md-square" style="margin-right:5px;" [ngStyle]="{'color':selectedColorHex}"></ion-icon>
   </p> -->
   
-  <!-- <button block ion-button (click)='upload()'>Upload</button>     -->
-  <button block ion-button (click)='analyze()'>Analyze</button> 
+  <!-- <button block ion-button (click)='upload()'>Upload</button>     
+  <button block ion-button (click)='analyze()'>Analyze</button> -->
     
   
   <!-- <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex}" (click)="onClick(color)" [ngClass]="{'selected':(color.hex===selectedColorHex)}"> </ion-card> -->

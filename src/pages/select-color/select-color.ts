@@ -30,23 +30,28 @@ export class SelectColorPage {
 	colorGridRows: Array<any>; //Each element will be a list of colors corresponidng to a row.
 
 	public base64Image: string;
+	//testImage: string = 'https://www.scienceabc.com/wp-content/uploads/2017/02/Thailand-beach-sand.jpg';
 	fireURL: string;
 	dominantColor: string;
 
 	constructor(public navCtrl: NavController, public db: AngularFireDatabase, private camera: Camera, private toastCtrl: ToastController) {
 		db.list<any>('/Colors').valueChanges().subscribe(_rawcolors => {
 			this.colors = _.sortBy(_rawcolors, "no");
-			console.log("this.colors is: ", this.colors);
+			//console.log("this.colors is: ", this.colors);
 			this.setColorGridSets();
 		})
 
 		initializeApp(environment.firebase);
 	}
 
+	onClick(color) {
+		this.navCtrl.push(DiagnosisPage, { selectedColor: color.hex, image: null});	
+	}
+
 	analyze() {
 		let color;
 		let url = this.fireURL;
-		// let url = 'https://firebasestorage.googleapis.com/v0/b/boop-a674c.appspot.com/o/images%2F1510245621.jpg?alt=media&token=fbfdeafa-fea9-4da1-af80-3ec157c436ad';
+		//let url = this.testImage;
 		sightengine("1801151869", "bBS92aZfoXDJKm9Y3p8u").check(['properties']).set_url(url).then(function (result) {
 			//this will return a string of the dominant hex value
 			if (result.status == "success") {
@@ -59,7 +64,8 @@ export class SelectColorPage {
 			this.selectedColorHex = this.getNearestColor(work);
 			return this.selectedColorHex;
 		}).then((hex)=>{
-			this.navCtrl.push(DiagnosisPage, { selectedColor: hex, image:this.base64Image });
+			//console.log(this.testImage);
+			this.navCtrl.push(DiagnosisPage, { selectedColor: hex, image: this.fireURL });
 		}).catch(function (err) {
 			console.log(err);
 		});
@@ -124,9 +130,7 @@ export class SelectColorPage {
 		// this.navCtrl.push(DiagnosisPage, { selectedColor: this.selectedColorHex, image:this.base64Image });
 	}
 
-	onClick(color) {
-		this.navCtrl.push(DiagnosisPage, { selectedColor: color.hex, image:""});	
-	}
+	
 
 	getNearestColor(inp_color) {
 		let nearestColorHex, i, _dist;

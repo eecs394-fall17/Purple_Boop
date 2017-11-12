@@ -15,9 +15,13 @@ export class DiagnosisPage {
 	selectedColorName: any;
 	severity: any;
 	text: any;
+	imageSRC: any;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
 		this.selectedColorHex = navParams.get("selectedColor");
+		this.imageSRC = navParams.get("image"); 
+		console.log(this.imageSRC);
+		
 		db.list<any>('/Texts/'+this.selectedColorHex.substring(1)).valueChanges().subscribe(_rawdata=>
 		{
 			[this.selectedColorName, this.severity, this.text] = _rawdata;

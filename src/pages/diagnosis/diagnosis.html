@@ -7,7 +7,11 @@
   </ion-navbar>
 </ion-header>
  
-<ion-content padding>
+<ion-content>
+  <div [style.background]="selectedColorHex" class="picNstuff">
+    <img *ngIf="imageSRC" [src]="imageSRC" alt="Your Picture">
+    <div *ngIf="!imageSRC"></div>  
+  </div>
   <div id="content-holder">
     <span *ngIf="severity==='Green'">
       <ion-icon id="green" ios="ios-checkmark-circle" md="md-checkmark-circle"></ion-icon>
