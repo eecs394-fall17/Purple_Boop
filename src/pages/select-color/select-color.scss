@@ -23,19 +23,29 @@ ion-row{
 
 #selectColorGrid{
   #imageRow{
-    // height:30vh;
     ion-col{
       text-align:center !important;
-      ion-icon{
-        font-size:30vw;
+      .imgHolder{
+        margin:auto;
+
+        display:table;
+        >div{
+          display:table-cell;
+          vertical-align: middle;
+          
+        }
+
         @media all and (max-width: 560px) {
-            font-size:30vw;
             width: 35vw;
+            height: 35vw
         }
         @media all and (min-width: 560px) {
-            font-size:20vw;
             width: 22.5vw;
+            height: 22.5vw
         }
+        // img{
+        //   width:22.5vw;
+        // }
         background-color:white;
         border:1px solid #333333;
       }
