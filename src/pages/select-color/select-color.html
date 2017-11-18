@@ -17,13 +17,34 @@
       <ion-col col-6>
         <div>
           <p class="instruction">Take photo</p>
-          <ion-icon padding id="camera-icon" ios="ios-camera" md="md-camera" (click)="onClickCamera()"></ion-icon>
         </div>
       </ion-col>
       <ion-col col-6>
         <div>
           <p class="instruction">Upload from gallery</p>
-          <ion-icon padding ios="md-photos" (click)="onClickUpload()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row id="imageRow"> <!-- First partition 50% of screen  -->
+      <ion-col col-6>
+        <div>
+          <!-- <p class="instruction">Take photo</p> -->
+          <div class="imgHolder">
+            <div>
+              <img padding src="../../assets/imgs/camera_icon.png" (click)="onClickCamera()">
+            </div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div>
+          <!-- <p class="instruction">Upload from gallery</p> -->
+          <div class="imgHolder">
+            <div>
+              <img padding src="../../assets/imgs/boop_logo.png">
+            </div>
+          </div>
         </div>
       </ion-col>
     </ion-row>
