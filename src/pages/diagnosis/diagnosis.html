@@ -8,7 +8,7 @@
 </ion-header>
  
 <ion-content>
-  <div [style.background]="selectedColorHex" class="picNstuff">
+  <div [style.background]="selectedColor.hex" class="picNstuff">
     <img *ngIf="imageSRC" [src]="imageSRC" alt="Your Picture">
     <div *ngIf="!imageSRC"></div>  
   </div>

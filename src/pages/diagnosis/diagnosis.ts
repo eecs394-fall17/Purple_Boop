@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabaseModule, AngularFireDatabase,AngularFireObject } from 'angularfire2/database';
+
 import * as _ from 'lodash';
 
 @Component({
@@ -11,20 +12,28 @@ import * as _ from 'lodash';
 export class DiagnosisPage {
 	@ViewChild(Nav) navi: Nav;
 	
-	selectedColorHex: any;
-	selectedColorName: any;
+	selectedColor: any;
 	severity: any;
 	text: any;
 	imageSRC: any;
+	response:any;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
-		this.selectedColorHex = navParams.get("selectedColor");
+		this.selectedColor = navParams.get("selectedColor");
 		this.imageSRC = navParams.get("image"); 
+		if(this.selectedColor.name==="white"){
+			this.severity = navParams.get("severity");
+			this.text = navParams.get("text");
+		}
+		else{
+			console.log("name of color is: ", this.selectedColor.name)
+			[this.severity, this.text] = this.extractJsonInfo(navParams.get("response"));
+		}
 		console.log(this.imageSRC);
-		
-		db.list<any>('/Texts/'+this.selectedColorHex.substring(1)).valueChanges().subscribe(_rawdata=>
-		{
-			[this.selectedColorName, this.severity, this.text] = _rawdata;
-		});
+	}
+
+	extractJsonInfo(json){
+		console.log("eJI called with: ", json);
+		return [json["severity"], json["response"]];
 	}
 }

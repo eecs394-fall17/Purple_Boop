@@ -1,0 +1,198 @@
+{
+	"red": {
+		"type":"question",
+		"response":"Is it in hard pellets?",
+		"options": {
+			"yes": {
+				"type":"answer",
+				"response":"Hard pellets are a sign of constipation. Flecks of red could be a result of baby trying too hard to poop. Adding a little prune juice to the next bottle can help soften things up.",
+				"severity":"Yellow"
+			},
+			"no": {
+				"type":"question",
+				"response":"Is it watery with red streaks?",
+				"options": {
+					"yes": {
+						"type":"answer",
+						"response":"A diarrhea-like texture with red streaks that look like congealed fat may be a sign of a bacterial infection. Consult your pediatrician.",
+						"severity":"Red"
+					},
+					"no": {
+						"type":"answer",
+						"response":"If there's nothing unusual about the texture, red color may be just a result of something specific in your baby's diet. If you're still breastfeeding, it may be a sign of a milk allergy. Mom should try to eliminate dairy and see if it changes. If baby is eating solid food, maybe the color can be linked to something like beets.",
+						"severity":"Green"
+					}
+				}
+			}
+		}
+	},
+	"black":{
+		"type":"question",
+		"response":"Is baby less than 3 days old?",
+		"options": {
+			"yes": {
+				"type":"answer",
+				"response":"Baby's first stool, within the first days of life, called meconium, rids a newborn body of all of the materials swallowed in utero: amniotic fluid, intestinal epithelial cells, lanugo, mucus, bils and water. (If you don't see it within 48 hours, mention it to your pediatrician.) It's very sticky. You may need an entire tub of wipes for this one. ",
+				"severity":"Green"
+			},
+			"no": {
+				"type":"question",
+				"response":"Is baby newborn, 3 days or older?",
+				"options": {
+					"yes": {
+						"type":"answer",
+						"response":"For newborns after the first few days, a dark-black stool can be a sign of GI bleeding. Consult your pediatrician immediately.",
+						"severity":"Red"
+					},
+					"no": {
+						"type":"question",
+						"response":"Is baby eating solid food?",
+						"options": {
+							"yes": {
+								"type":"answer",
+								"response":"Once a baby is on to solid food, black (or very dark green) stool can be a sign of too much iron in the diet. In this case, the stool is also usually thick, almost constipated. Don't mess with baby's diet, but consult your pediatrician about ways to soften baby's stool.",
+								"severity":"Green"
+							},
+							"no": {
+								"type":"answer",
+								"response":"Ghostly looking is no joking matter. If your baby isn't producing bile (which gives stool its characterestic color), it will look colorless, white or chalky. This can be a sign of serious liver or gallbladder problem. ",
+								"severity":"Red"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"white":{
+		"type":"answer",
+		"response":"Ghostly looking is no joking matter. If your baby isn't producing bile (which gives stool its characterestic color), it will look colorless, white or chalky. This can be a sign of serious liver or gallbladder problem.",
+		"severity":"Red"
+	},
+	"brown":{
+		"type":"question",
+		"response":"Is the texture like guacamole?",
+		"options": {
+			"yes": {
+				"type":"answer",
+				"response":"Text to come. Double check severity. (brown guacamole)",
+				"severity":"Green"
+			},
+			"no": {
+				"type":"answer",
+				"response":"Text to come. Double check severity. (brown solid)",
+				"severity":"Green"
+			}
+		}
+	},
+	"orange":{
+		"type":"question",
+		"response":"Is the texture seedy and the smell sweet?",
+		"options": {
+			"yes": {
+				"type":"answer",
+				"response":"Text to come. Double check severity. (orange seedy sweet)",
+				"severity":"Green"
+			},
+			"no": {
+				"type":"question",
+				"response":"Is the texture seedy but not sweet smelling?",
+				"options": {
+					"yes": {
+						"type":"answer",
+						"response":"Text to come. Double check severity. (orange seedy not-sweet)",
+						"severity":"Green"
+					},
+					"no": {
+						"type":"question",
+						"response":"Is the texture like guacamole and the smell strong?",
+						"options": {
+							"yes": {
+								"type":"answer",
+								"response":"Text to come. Double check severity. (orange guacamole strong)",
+								"severity":"Green"
+							},
+							"no": {
+								"type":"question",
+								"response":"Is the texture like guacamole but not strong smelling?",
+								"options": {
+									"yes": {
+										"type":"answer",
+										"response":"Text to come. Double check severity. (orange guacamole not-strong)",
+										"severity":"Green"
+									},
+									"no": {
+										"type":"answer",
+										"response": "Text to come. Double check severity. (orange)",
+										"severity":"Green"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"green":{
+		"type":"question",
+		"response":"Is the texture thick and the smell strong?",
+		"options": {
+			"yes": {
+				"type":"answer",
+				"response":"Text to come. Double check severity. (green thick strong)",
+				"severity":"Green"
+			},
+			"no": {
+				"type":"question",
+				"response":"Is the texture like guacamole?",
+				"options": {
+					"yes": {
+						"type":"answer",
+						"response":"Text to come. Double check severity. (green guacamole)",
+						"severity":"Green"
+					},
+					"no": {
+						"type":"question",
+						"response":"Is the texture frothy?",
+						"options": {
+							"yes": {
+								"type":"answer",
+								"response":"Text to come. Double check severity. (green frothy)",
+								"severity":"Green"
+							},
+							"no": {
+								"type":"question",
+								"response":"Is the texture like tar?",
+								"options": {
+									"yes": {
+										"type":"answer",
+										"response":"Text to come. Double check severity. (green tar)",
+										"severity":"Green"
+									},
+									"no": {
+										"type":"question",
+										"response":"Is the texture normal but strong smelling?",
+										"options": {
+											"yes": {
+												"type":"answer",
+												"response":"Text to come. Double check severity. (green normal strong)",
+												"severity":"Green"
+											},
+											"no": {
+												"type":"answer",
+												"response":"Text to come. Double check severity. (green)",
+												"severity":"Green"
+											}
+										}
+									}
+								}
+
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

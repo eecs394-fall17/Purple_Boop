@@ -11,6 +11,7 @@ import { storage, initializeApp } from 'firebase';
 import { environment } from '../../environments/environment';
 import { ToastController } from 'ionic-angular';
 
+
 import * as _ from 'lodash';
 import * as sightengine from 'sightengine';
 
@@ -23,53 +24,17 @@ export class SelectColorPage {
 	// @ViewChild(Nav) navi: Nav;
 	// colors: Array<{hex:string, name:string}>;
 	colors: Array<any>;
-	selectedColorHex: string = "";
+	selectedColor: string = "";
+
 	// borderColors = {}; //Note the key has no # but the result does.
 	// fontColors = {}; //Note the key has no # but the result does.
-	colsPerRow:number = 2;
+	colsPerRow:number = 3;
 	colorGridRows: Array<any>; //Each element will be a list of colors corresponidng to a row.
 
 	public base64Image: string;
 	//testImage: string = 'https://www.scienceabc.com/wp-content/uploads/2017/02/Thailand-beach-sand.jpg';
 	fireURL: string;
 	dominantColor: string;
-
-	constructor(public navCtrl: NavController, public db: AngularFireDatabase, private camera: Camera, private toastCtrl: ToastController) {
-		db.list<any>('/Colors').valueChanges().subscribe(_rawcolors => {
-			this.colors = _.sortBy(_rawcolors, "no");
-			//console.log("this.colors is: ", this.colors);
-			this.setColorGridSets();
-		})
-
-		initializeApp(environment.firebase);
-	}
-
-	onClick(color) {
-		this.navCtrl.push(DiagnosisPage, { selectedColor: color.hex, image: null});	
-	}
-
-	analyze() {
-		let color;
-		let url = this.fireURL;
-		//let url = this.testImage;
-		sightengine("1801151869", "bBS92aZfoXDJKm9Y3p8u").check(['properties']).set_url(url).then(function (result) {
-			//this will return a string of the dominant hex value
-			if (result.status == "success") {
-				color = result.colors.dominant.hex;
-				return color;
-			}
-
-		}).then((work) => {
-			this.dominantColor = work;
-			this.selectedColorHex = this.getNearestColor(work);
-			return this.selectedColorHex;
-		}).then((hex)=>{
-			//console.log(this.testImage);
-			this.navCtrl.push(DiagnosisPage, { selectedColor: this.selectedColorHex, image: this.fireURL });
-		}).catch(function (err) {
-			console.log(err);
-		});
-	}
 
 	private captureOptions: CameraOptions = {
 		allowEdit:true,
@@ -86,6 +51,58 @@ export class SelectColorPage {
 		encodingType: this.camera.EncodingType.JPEG,
 		mediaType: this.camera.MediaType.PICTURE,
 		sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+	}
+
+
+	constructor(public navCtrl: NavController, public db: AngularFireDatabase, private camera: Camera, private toastCtrl: ToastController) {
+		db.list<any>('/Colors').valueChanges().subscribe(_rawcolors => {
+			this.colors = _.sortBy(_rawcolors, "no");
+			//console.log("this.colors is: ", this.colors);
+			this.setColorGridSets();
+		});
+		
+		initializeApp(environment.firebase);
+	}
+
+	moveToNextPage(color, img=null){
+		if(color.hex==="#f6f6f6"){
+			this.navCtrl.push(DiagnosisPage, { selectedColor: color, image: img, 
+				text :"Ghostly looking is no joking matter. If your baby isn't producing bile (which gives stool its characterestic color), it will look colorless, white or chalky. This can be a sign of serious liver or gallbladder problem.",
+				severity:"Red"
+			});	
+			// selectedColor: this.selectedColor, image: this.imageSRC, response: this.diagnosisJson
+		}
+		else{
+			this.navCtrl.push(SelectTexturePage, { selectedColor: color, image: img});	
+		}
+	}
+
+	onClick(color) {
+		console.log("onClick color: ", color);
+		this.moveToNextPage(color);
+	}
+
+	analyze() {
+		let color;
+		let url = this.fireURL;
+		//let url = this.testImage;
+		sightengine("1801151869", "bBS92aZfoXDJKm9Y3p8u").check(['properties']).set_url(url).then(function (result) {
+			//this will return a string of the dominant hex value
+			if (result.status == "success") {
+				color = result.colors.dominant.hex;
+				return color;
+			}
+
+		}).then((work) => {
+			this.dominantColor = work;
+			this.selectedColor = this.getNearestColor(work);
+			return this.selectedColor;
+		}).then((color)=>{
+			//console.log(this.testImage);
+			this.moveToNextPage(color, this.fireURL);
+		}).catch(function (err) {
+			console.log(err);
+		});
 	}
 
 	takePicture() {
@@ -121,28 +138,26 @@ export class SelectColorPage {
 
 	onClickCamera() {
 		this.flashToast();
-		// this.navCtrl.push(DiagnosisPage, { selectedColor: this.selectedColorHex, image:this.base64Image });
 
 	}
 
 	onClickUpload() {
 		this.uploadPicture();
-		// this.navCtrl.push(DiagnosisPage, { selectedColor: this.selectedColorHex, image:this.base64Image });
 	}
 
 	
 
 	getNearestColor(inp_color) {
-		let nearestColorHex, i, _dist;
+		let nearestColor, i, _dist;
 		let smallestDistance = Infinity;
 		for (i = 0; i < this.colors.length; i++) {
 			_dist = this.calcDistance(this.colors[i].hex, inp_color);
 			if (_dist < smallestDistance) {
-				nearestColorHex = this.colors[i].hex;
+				nearestColor = this.colors[i];
 				smallestDistance = _dist;
 			}
 		}
-		return nearestColorHex;
+		return nearestColor;
 	}
 
 	calcDistance(color1, color2) {
@@ -161,11 +176,7 @@ export class SelectColorPage {
 
 	setColorGridSets(){
 		this.colorGridRows = _.chunk(this.colors, this.colsPerRow);
-	}
-
-	onClickContinue() {
-		// this.navCtrl.push(SelectTexturePage, {selectedColor:this.selectedColor.hex, borderColor:this.getBorderColor(this.selectedColor.hex)});
-		this.navCtrl.push(DiagnosisPage, { selectedColor: this.selectedColorHex });
+		console.log("colorGridRows is: ", this.colorGridRows);
 	}
 
 	flashToast() {
