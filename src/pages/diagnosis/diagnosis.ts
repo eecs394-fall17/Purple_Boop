@@ -16,7 +16,6 @@ export class DiagnosisPage {
 	severity: any;
 	text: any;
 	imageSRC: any;
-	response:any;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
 		this.selectedColor = navParams.get("selectedColor");
@@ -27,13 +26,19 @@ export class DiagnosisPage {
 		}
 		else{
 			console.log("name of color is: ", this.selectedColor.name)
-			[this.severity, this.text] = this.extractJsonInfo(navParams.get("response"));
+			let _resp = this.extractJsonInfo(navParams.get("response"));
+			this.severity=_resp[0]
+			this.text = _resp[1]
+			console.log("this.severity is set to : ", this.severity)
+			console.log("this.text is set to : ", this.text)
 		}
 		console.log(this.imageSRC);
 	}
 
-	extractJsonInfo(json){
-		console.log("eJI called with: ", json);
-		return [json["severity"], json["response"]];
+	extractJsonInfo(_json){
+		console.log("eJI called with: ", _json);
+		let _a = [_json["severity"], _json["response"]];
+		console.log("_a is: ", _a);
+		return _a
 	}
 }

@@ -35,6 +35,7 @@ import { HttpModule } from '@angular/http';
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(MyApp, {
+      
       iconMode: 'ios',
       modalEnter: 'modal-slide-in',
       modalLeave: 'modal-slide-out',
