@@ -8,6 +8,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/dat
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Camera } from '@ionic-native/camera';
 import { Crop } from '@ionic-native/crop';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { MyApp } from './app.component';
 import { SelectColorPage } from '../pages/select-color/select-color';
@@ -56,6 +57,7 @@ import {HttpClientModule} from '@angular/common/http';
     AngularFireDatabase,
     Camera,
     Crop,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
