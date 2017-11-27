@@ -6,11 +6,11 @@
     <ion-title>Diagnosis</ion-title>
   </ion-navbar>
 </ion-header>
- 
+
 <ion-content>
   <div [style.background]="selectedColor.hex" class="picNstuff">
     <img *ngIf="imageSRC" [src]="imageSRC" alt="Your Picture">
-    <div *ngIf="!imageSRC"></div>  
+    <div *ngIf="!imageSRC"></div>
   </div>
   <div id="content-holder">
     <span *ngIf="severity==='Green'">
@@ -26,5 +26,26 @@
       <h3>Uh-oh!</h3>
     </span>
     <p id="diagnosis-text">{{text}}</p>
+  </div>
+  
+  <div class="link" >
+  <a href="tel:1234567890">
+    <button ion-button>CALL THE DOCTOR</button>
+  </a>
+</div>
+
+  <div class="flex">
+    <div>
+      <button ion-button icon-only color="gray" (click)='backToRoot()'>
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <p>RESTART</p>
+    </div>
+    <div>
+      <button ion-button icon-only color="gray" (click)='shareMe()'>
+        <ion-icon name="share"></ion-icon>
+      </button>
+      <p>SHARE</p>
+    </div>
   </div>
 </ion-content>

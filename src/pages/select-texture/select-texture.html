@@ -6,7 +6,7 @@
 <ion-content>
   <ion-grid id="selectTextureGrid">
     <ion-row id="imageRow"> <!-- First partition 50% of screen; show Img/color  -->
-      <img *ngIf="imageSRC" src="imageSRC">
+      <img *ngIf="imageSRC" [src]="imageSRC" alt="Your Picture">
       <div *ngIf="!imageSRC" [ngStyle]="{'background-color':selectedColor.hex}" > </div>
     </ion-row>
   
