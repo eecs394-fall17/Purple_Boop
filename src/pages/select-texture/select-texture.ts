@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, NavController, NavParams } from 'ionic-angular';
+import { Nav, NavController, NavParams, Navbar } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabaseModule, AngularFireDatabase,AngularFireObject } from 'angularfire2/database';
 import { DiagnosisPage } from '../diagnosis/diagnosis';
@@ -21,43 +21,66 @@ export class SelectTexturePage {
 
 	diagnosisJson:string;
 
+	path:string[]=[]; //The list of actions you've taken: ["no","no", "yes"]
+	pageNumber: number = 0; // pageNumber=0 as soon as you open the selectColor page. 
+
+	@ViewChild(Navbar) navBar: Navbar;
+
+	ionViewDidLoad(){
+		this.setBackButtonAction();
+	}
+
+	setBackButtonAction(){
+		this.navBar.backButtonClick = () => {
+			if(this.pageNumber==0){
+				this.navCtrl.pop()
+			} else{
+				this.goBack();
+			}
+		}
+	}
+
 	constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private textServ: textureService) {
 		this.selectedColor = navParams.get("selectedColor");
-		console.log("this.selectedColor has been selected and set to : ", this.selectedColor);
 		this.imageSRC = navParams.get("image"); 
 
 		this.textServ.getData().subscribe((data) => {
 		  this.textureJsonData = data;
-		  console.log("textureJsonData ", this.textureJsonData);
 		  this.currentJson=this.textureJsonData[this.selectedColor.name]
-		  console.log("currentJson ", this.currentJson);
 		  this.extractInfo();
-		  // console.log("currentJson2 ", this.currentJson);
 		});
 	}
 
 	onClick(outcome){
-		console.log("outcome is: ", outcome);
-		console.log("this.currentJson was: ", this.currentJson);
+		this.pageNumber+=1;
+		this.path.concat([outcome]);
 		this.currentJson = this.currentJson["options"][outcome]
-		console.log("this.currentJson is now: ", this.currentJson);
+		this.extractInfo();
+	}
+
+	goBack(){
+		let _c = this.textureJsonData[this.selectedColor.name]
+		let _p = 0;
+		for(let i = 0; i<this.path.length; i++){
+			_p+=1;
+			_c = _c["options"][this.path[i]];
+		}
+		this.currentJson = _c;
+		this.pageNumber=_p;
 		this.extractInfo();
 	}
 	
 	extractInfo(){
-		console.log("this.extractInfo() called");
 		if(this.currentJson["type"]=="question"){
 			this.currentQuestion=this.currentJson["response"];
 		}
 		else{
-			console.log('this.currentJson["type"] : ',this.currentJson["type"]);
 			this.diagnosisJson=this.currentJson
 			this.moveToNextPage();
 		}
 	}
 
 	moveToNextPage(){
-		console.log("moving to Next Page with response set to: ", this.diagnosisJson);
 		this.navCtrl.push(DiagnosisPage, { selectedColor: this.selectedColor, image: this.imageSRC, response: this.diagnosisJson});	
 	}
 
