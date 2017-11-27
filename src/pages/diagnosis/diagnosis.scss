@@ -94,3 +94,16 @@ ion-content.content{
 		margin:0px;
 	}
 }
+
+.link{
+	text-align: center;
+	height: 70px;
+}
+
+.flex{
+	display: flex;
+	justify-content: space-around;
+	div{
+		text-align: center;
+	}
+}
