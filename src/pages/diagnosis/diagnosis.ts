@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabaseModule, AngularFireDatabase,AngularFireObject } from 'angularfire2/database';
+
 import * as _ from 'lodash';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
@@ -13,22 +14,34 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 export class DiagnosisPage {
 	@ViewChild(Nav) navi: Nav;
 	
-	selectedColorHex: any;
-	selectedColorName: any;
+	selectedColor: any;
 	severity: any;
 	text: any;
 	imageSRC: any;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private socialSharing: SocialSharing) {
-		this.selectedColorHex = navParams.get("selectedColor");
+		this.selectedColor = navParams.get("selectedColor");
 		this.imageSRC = navParams.get("image"); 
+		if(this.selectedColor.name==="white"){
+			this.severity = navParams.get("severity");
+			this.text = navParams.get("text");
+		}
+		else{
+			console.log("name of color is: ", this.selectedColor.name)
+			let _resp = this.extractJsonInfo(navParams.get("response"));
+			this.severity=_resp[0]
+			this.text = _resp[1]
+			console.log("this.severity is set to : ", this.severity)
+			console.log("this.text is set to : ", this.text)
+		}
 		console.log(this.imageSRC);
-		
-		db.list<any>('/Texts/'+this.selectedColorHex.substring(1)).valueChanges().subscribe(_rawdata=>
-		{
-			
-			[this.selectedColorName, this.severity, this.text] = _rawdata;
-		});
+	}
+
+	extractJsonInfo(_json){
+		console.log("eJI called with: ", _json);
+		let _a = [_json["severity"], _json["response"]];
+		console.log("_a is: ", _a);
+		return _a
 	}
 
 	shareMe(){

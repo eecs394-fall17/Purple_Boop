@@ -1,27 +1,20 @@
  <ion-header>
   <ion-navbar>
-    <ion-title>Find the Color</ion-title>
-  <!--  <ion-buttons right>
-      <button ion-button icon-only color="dark" (click)="onClickCamera()"> 
-        <ion-icon id="camera-icon" ios="ios-camera" md="md-camera" (click)="onClickCamera()"></ion-icon>
-      </button>
-    </ion-buttons> -->
+    <img id="boopLogo" src="../../assets/imgs/boop_logo.svg">
   </ion-navbar>
 </ion-header> 
-<!-- <ion-content [ngClass]="{'addMargin':selectedColorHex}"  padding> -->
-<ion-content padding>
-  
-  <ion-grid id="selectColorGrid">
+<ion-content>
+  <ion-grid padding id="selectColorGrid">
     <!-- <ion-row class="buffer"></ion-row> -->
-    <ion-row id="imageRow"> <!-- First partition 50% of screen  -->
+    <ion-row id="instructionRow"> <!-- First partition 50% of screen  -->
       <ion-col col-6>
         <div>
-          <p class="instruction">Take photo</p>
+          <p class="instruction">Take Photo</p>
         </div>
       </ion-col>
       <ion-col col-6>
         <div>
-          <p class="instruction">Upload from gallery</p>
+          <p class="instruction">Upload Photo</p>
         </div>
       </ion-col>
     </ion-row>
@@ -32,36 +25,40 @@
           <!-- <p class="instruction">Take photo</p> -->
           <div class="imgHolder">
             <div>
-              <img padding src="../../assets/imgs/camera_icon.png" (click)="onClickCamera()">
+              <img padding src="../../assets/imgs/camera_icon2.png" (click)="onClickCamera()">
             </div>
           </div>
         </div>
       </ion-col>
+
       <ion-col col-6>
         <div>
           <!-- <p class="instruction">Upload from gallery</p> -->
           <div class="imgHolder">
             <div>
-              <img padding src="../../assets/imgs/boop_logo.png">
+              <img padding src="../../assets/imgs/upload_icon2.png" (click)="onClickUpload()">
             </div>
           </div>
         </div>
       </ion-col>
     </ion-row>
+  </ion-grid>
 
+  <ion-grid id="selectColorGrid2">
     <ion-row class="buffer">
     </ion-row>
-
     <ion-row id="swatchesRow">
       <ion-grid id="swatchesGrid">
-        <p class="instruction">Or select poop color</p>
+        <p class="instruction">Or Select Poop Color</p>
         <ion-row *ngFor="let row of colorGridRows">
-          <ion-col col-1></ion-col>
-          <ion-col *ngFor="let color of row.slice(0,1)" col-4 [ngStyle]="{ 'background-color':color.hex, 'border':((color.hex=='#f6f6f6')?'1px solid #ddd':'0px') }" (click)="onClick(color)">
+          <!-- <ion-col col-2></ion-col> -->
+          <ion-col *ngFor="let color of row.slice(0,1)" [ngStyle]="{ 'background-color':color.hex, 'border':((color.hex=='#f6f6f6')?'1px solid #364F6B':('1px solid'+color.hex)), 'box-sizing':(color.hex=='#f6f6f6')?'border-box':''}" (click)="onClick(color)">
           </ion-col>
-          <ion-col *ngFor="let color of row.slice(1)" col-4 offset-2 [ngStyle]="{'background-color':color.hex}" (click)="onClick(color)">
+          <ion-col *ngFor="let color of row.slice(1,2)" offset-1 [ngStyle]="{'background-color':color.hex, 'border':('1px solid'+color.hex)}" (click)="onClick(color)">
           </ion-col>
-          <ion-col col-1></ion-col>
+          <ion-col *ngFor="let color of row.slice(2,3)" offset-1 [ngStyle]="{'background-color':color.hex, 'border':('1px solid'+color.hex)}" (click)="onClick(color)">
+          </ion-col>
+          <!-- <ion-col col-2></ion-col> -->
         </ion-row>
       </ion-grid>
     </ion-row>
@@ -84,16 +81,3 @@
   <!-- <ion-card *ngFor="let color of colors" [ngStyle]="{'background-color':color.hex}" (click)="onClick(color)" [ngClass]="{'selected':(color.hex===selectedColorHex)}"> </ion-card> -->
 
 </ion-content>
-
-<!-- <ion-footer>
-  <ion-toolbar *ngIf="selectedColorHex">
-    <ion-buttons end>
-    	<button ion-button icon-right color="royal" (click)='onClickContinue()'>
-    		<ion-icon ios="ios-square" md="md-square" style="margin-right:5px;" [ngStyle]="{'color':selectedColorHex}"></ion-icon>
-    		Continue
-    		<ion-icon name="arrow-forward"></ion-icon>
-		</button>
-	 </ion-buttons>
-  </ion-toolbar>
-</ion-footer>	
- -->

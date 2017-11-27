@@ -1,49 +1,7 @@
 @import "../../app/app";
 
-ion-header{
-	ion-navbar{
-		.toolbar-background{
-			background-color: #4D648D !important;
-		}
-		.toolbar-content{
-			ion-title{
-				.toolbar-title{
-					color: white !important;
-				}
-			}
-		}
-	}
-}
-
 ion-content.content{
 	background-color: #f4f4f4 !important;
-	&.addMargin{
-		&.content-ios{
-			.fixed-content, .scroll-content{
-			    margin-bottom:44px; 
-			}
-		}
-		&.content-md{
-			.fixed-content, .scroll-content{
-			    margin-bottom:56px; 
-			}
-		}
-	}
-	&:not(.addMargin){
-		.fixed-content, .scroll-content{
-			margin-bottom:0px;
-		}
-	}
-	&.content-ios{
-		div.scroll-content{
-			height:calc(100%-44px);
-		}
-	}
-	&.content-md{
-		div.scroll-content{
-			height:calc(100%-56px);
-		}
-	}
 }
 
 .picNstuff{

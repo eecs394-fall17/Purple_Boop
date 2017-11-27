@@ -18,8 +18,11 @@ import { DiagnosisPage } from '../pages/diagnosis/diagnosis';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { textureService } from './services/texture-service';
 
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -31,13 +34,13 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     IonicModule.forRoot(MyApp, {
-      backButtonText: '',
+      backButtonText:'Back',
       iconMode: 'ios',
       modalEnter: 'modal-slide-in',
       modalLeave: 'modal-slide-out',
       tabsPlacement: 'bottom',
-      pageTransition: 'ios-transition'
     },
   ),
     AngularFireModule.initializeApp(environment.firebase, 'boop'),
@@ -55,6 +58,7 @@ import {HttpClientModule} from '@angular/common/http';
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
+    textureService,
     Camera,
     Crop,
     SocialSharing,

@@ -1,3 +1,10 @@
+$_darkblue: #364F6B;
+$_lightblue: #3FC1C9;
+$_silver: #F5F5F5;
+$_pink: #FC5185;
+$_green: #46BC99;
+
+
 ion-card {
   position: relative;
   text-align: center;
@@ -17,11 +24,41 @@ ion-row{
   }
 }
 
-.instruction{
-  color:#9F9F9F;
+ion-header{
+  ion-navbar{
+    .toolbar-background{
+      background-color: $_lightblue !important;
+    }
+    .toolbar-content{
+      text-align: center !important;
+      #boopLogo{
+        max-width:100px;
+        padding-top:5px;
+        margin:auto;
+        vertical-align: middle;
+      }
+      ion-title{
+        .toolbar-title{
+          color: white !important;
+        }
+      }
+    }
+  }
 }
 
 #selectColorGrid{
+  #instructionRow{
+    padding-top:15px;
+    ion-col{
+      text-align:center !important;
+    }
+    .instruction{
+      color:$_darkblue;
+      font-family: 'Mallanna';
+      font-size:1.2em;
+      margin:0;
+    }
+  }
   #imageRow{
     ion-col{
       text-align:center !important;
@@ -34,7 +71,6 @@ ion-row{
           vertical-align: middle;
           
         }
-
         @media all and (max-width: 560px) {
             width: 35vw;
             height: 35vw
@@ -43,21 +79,42 @@ ion-row{
             width: 22.5vw;
             height: 22.5vw
         }
-        // img{
-        //   width:22.5vw;
-        // }
-        background-color:white;
-        border:1px solid #333333;
       }
     }
   }
+}
+
+#selectColorGrid2{
+  width:100%;
+  padding:0px;
   #swatchesRow{
+    width:100%;
+    padding:0px;
+    #swatchesGrid{
+      width:100%;
+      padding:0px;
+      ion-row{
+        padding:8px 12px;
+      }
+      .instruction{
+        width:100%;
+        font-size:1.2em;
+        background-color:$_darkblue;
+        color:white;
+        text-align:center;
+        padding:5px;
+        font-family: 'Mallanna';
+      }
+      ion-col{
+        border-radius:10px;
+      }
+    }
     p{
       margin:0px auto 10px;
     }
     // height:50vh;
     ion-row{
-      height:33vw;
+      height:27vw;
       padding:8px;
     }
   }
