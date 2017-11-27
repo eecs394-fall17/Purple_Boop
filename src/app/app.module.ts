@@ -36,12 +36,11 @@ import { HttpModule } from '@angular/http';
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(MyApp, {
-      
+      backButtonText:'Back',
       iconMode: 'ios',
       modalEnter: 'modal-slide-in',
       modalLeave: 'modal-slide-out',
       tabsPlacement: 'bottom',
-      pageTransition: 'ios-transition'
     },
   ),
     AngularFireModule.initializeApp(environment.firebase, 'boop'),
