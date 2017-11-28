@@ -5,7 +5,7 @@
 		"options": {
 			"yes": {
 				"type":"answer",
-				"response":"Hard pellets are a sign of constipation. Flecks of red could be a result of baby trying too hard to poop. Adding a little prune juice to the next bottle can help soften things up.",
+				"response":"Uh Oh! Hard pellets are a sign of constipation. Flecks of red could be a result of baby trying too hard to poop. Adding a little prune juice to the next bottle can help soften things up.",
 				"severity":"Yellow"
 			},
 			"no": {
@@ -14,12 +14,12 @@
 				"options": {
 					"yes": {
 						"type":"answer",
-						"response":"A diarrhea-like texture with red streaks that look like congealed fat may be a sign of a bacterial infection. Consult your pediatrician.",
+						"response":"Uh Oh! A diarrhea-like texture with red streaks that look like congealed fat may be a sign of a bacterial infection. Consult your pediatrician.",
 						"severity":"Red"
 					},
 					"no": {
 						"type":"answer",
-						"response":"If there's nothing unusual about the texture, red color may be just a result of something specific in your baby's diet. If you're still breastfeeding, it may be a sign of a milk allergy. Mom should try to eliminate dairy and see if it changes. If baby is eating solid food, maybe the color can be linked to something like beets.",
+						"response":"All good! If there's nothing unusual about the texture, red color may be just a result of something specific in your baby's diet. If you're still breastfeeding, it may be a sign of a milk allergy. Mom should try to eliminate dairy and see if it changes. If baby is eating solid food, maybe the color can be linked to something like beets.",
 						"severity":"Green"
 					}
 				}
@@ -32,7 +32,7 @@
 		"options": {
 			"yes": {
 				"type":"answer",
-				"response":"Baby's first stool, within the first days of life, called meconium, rids a newborn body of all of the materials swallowed in utero: amniotic fluid, intestinal epithelial cells, lanugo, mucus, bils and water. (If you don't see it within 48 hours, mention it to your pediatrician.) It's very sticky. You may need an entire tub of wipes for this one. ",
+				"response":"All good! Baby's first stool, within the first days of life, called meconium, rids a newborn body of all of the materials swallowed in utero: amniotic fluid, intestinal epithelial cells, lanugo, mucus, bils and water. (If you don't see it within 48 hours, mention it to your pediatrician.) It's very sticky. You may need an entire tub of wipes for this one. ",
 				"severity":"Green"
 			},
 			"no": {
@@ -41,7 +41,7 @@
 				"options": {
 					"yes": {
 						"type":"answer",
-						"response":"For newborns after the first few days, a dark-black stool can be a sign of GI bleeding. Consult your pediatrician immediately.",
+						"response":"Uh Oh! For newborns after the first few days, a dark-black stool can be a sign of GI bleeding. Consult your pediatrician immediately.",
 						"severity":"Red"
 					},
 					"no": {
@@ -50,12 +50,12 @@
 						"options": {
 							"yes": {
 								"type":"answer",
-								"response":"Once a baby is on to solid food, black (or very dark green) stool can be a sign of too much iron in the diet. In this case, the stool is also usually thick, almost constipated. Don't mess with baby's diet, but consult your pediatrician about ways to soften baby's stool.",
+								"response":"All good! Once a baby is on to solid food, black (or very dark green) stool can be a sign of too much iron in the diet. In this case, the stool is also usually thick, almost constipated. Don't mess with baby's diet, but consult your pediatrician about ways to soften baby's stool.",
 								"severity":"Green"
 							},
 							"no": {
 								"type":"answer",
-								"response":"Ghostly looking is no joking matter. If your baby isn't producing bile (which gives stool its characterestic color), it will look colorless, white or chalky. This can be a sign of serious liver or gallbladder problem. ",
+								"response":"Uh Oh! Ghostly looking is no joking matter. If your baby isn't producing bile (which gives stool its characterestic color), it will look colorless, white or chalky. This can be a sign of serious liver or gallbladder problem. ",
 								"severity":"Red"
 							}
 						}
@@ -66,7 +66,7 @@
 	},
 	"white":{
 		"type":"answer",
-		"response":"Ghostly looking is no joking matter. If your baby isn't producing bile (which gives stool its characterestic color), it will look colorless, white or chalky. This can be a sign of serious liver or gallbladder problem.",
+		"response":"Uh Oh! Ghostly looking is no joking matter. If your baby isn't producing bile (which gives stool its characterestic color), it will look colorless, white or chalky. This can be a sign of serious liver or gallbladder problem.",
 		"severity":"Red"
 	},
 	"brown":{
@@ -75,12 +75,12 @@
 		"options": {
 			"yes": {
 				"type":"answer",
-				"response":"Text to come. Double check severity. (brown guacamole)",
+				"response":"All good! Text to come. Double check severity. (brown guacamole)",
 				"severity":"Green"
 			},
 			"no": {
 				"type":"answer",
-				"response":"Text to come. Double check severity. (brown solid)",
+				"response":"All good! Text to come. Double check severity. (brown solid)",
 				"severity":"Green"
 			}
 		}
@@ -91,7 +91,7 @@
 		"options": {
 			"yes": {
 				"type":"answer",
-				"response":"Text to come. Double check severity. (orange seedy sweet)",
+				"response":"All good! Text to come. Double check severity. (orange seedy sweet)",
 				"severity":"Green"
 			},
 			"no": {
@@ -100,7 +100,7 @@
 				"options": {
 					"yes": {
 						"type":"answer",
-						"response":"Text to come. Double check severity. (orange seedy not-sweet)",
+						"response":"All good! Text to come. Double check severity. (orange seedy not-sweet)",
 						"severity":"Green"
 					},
 					"no": {
@@ -109,7 +109,7 @@
 						"options": {
 							"yes": {
 								"type":"answer",
-								"response":"Text to come. Double check severity. (orange guacamole strong)",
+								"response":"All good! Text to come. Double check severity. (orange guacamole strong)",
 								"severity":"Green"
 							},
 							"no": {
@@ -118,12 +118,12 @@
 								"options": {
 									"yes": {
 										"type":"answer",
-										"response":"Text to come. Double check severity. (orange guacamole not-strong)",
+										"response":"All good! Text to come. Double check severity. (orange guacamole not-strong)",
 										"severity":"Green"
 									},
 									"no": {
 										"type":"answer",
-										"response": "Text to come. Double check severity. (orange)",
+										"response": "All good! Text to come. Double check severity. (orange)",
 										"severity":"Green"
 									}
 								}
@@ -140,7 +140,7 @@
 		"options": {
 			"yes": {
 				"type":"answer",
-				"response":"Text to come. Double check severity. (green thick strong)",
+				"response":"All good! Text to come. Double check severity. (green thick strong)",
 				"severity":"Green"
 			},
 			"no": {
@@ -149,7 +149,7 @@
 				"options": {
 					"yes": {
 						"type":"answer",
-						"response":"Text to come. Double check severity. (green guacamole)",
+						"response":"All good! Text to come. Double check severity. (green guacamole)",
 						"severity":"Green"
 					},
 					"no": {
@@ -158,7 +158,7 @@
 						"options": {
 							"yes": {
 								"type":"answer",
-								"response":"Text to come. Double check severity. (green frothy)",
+								"response":"All good! Text to come. Double check severity. (green frothy)",
 								"severity":"Green"
 							},
 							"no": {
@@ -167,7 +167,7 @@
 								"options": {
 									"yes": {
 										"type":"answer",
-										"response":"Text to come. Double check severity. (green tar)",
+										"response":"All good! Text to come. Double check severity. (green tar)",
 										"severity":"Green"
 									},
 									"no": {
@@ -176,12 +176,12 @@
 										"options": {
 											"yes": {
 												"type":"answer",
-												"response":"Text to come. Double check severity. (green normal strong)",
+												"response":"All good! Text to come. Double check severity. (green normal strong)",
 												"severity":"Green"
 											},
 											"no": {
 												"type":"answer",
-												"response":"Text to come. Double check severity. (green)",
+												"response":"All good! Text to come. Double check severity. (green)",
 												"severity":"Green"
 											}
 										}
