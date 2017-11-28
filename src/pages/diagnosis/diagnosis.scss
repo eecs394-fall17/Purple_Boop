@@ -1,8 +1,16 @@
 @import "../../app/app";
 
+$_darkblue: #364F6B;
+$_lightblue: #3FC1C9;
+$_silver: #F5F5F5;
+$_pink: #FC5185;
+$_green: #46BC99;
+
 ion-content.content{
-	background-color: #f4f4f4 !important;
+	background-color: white;
 }
+
+
 
 .picNstuff{
 	text-align: center;
@@ -17,51 +25,73 @@ ion-content.content{
 	div{
 		width: auto;
 		height: 100px;
+		height: 230px;
+		display: block;
 		background-color: transparent;
 	}
 }
 
 #content-holder{
 	text-align:center;
-	
+	margin-bottom: -55px;
+	margin-top: -20px;
 	//background-color:#fafafa;
 	//border: 4px solid #dedede;
-	ion-icon{
-		font-size: 70px;
-		&#green{
-			color:#3ed96a;
-		}
-		&#yellow{
-			color:#FEC03C;
-		}
-		&#red{
-			color:#f24044;
-		}
-	}
-	h3{
-		font-size:4.2rem;
-		font-family: 'Raleway', sans-serif;
-		color:#393939;
+	img{
+		max-width: 25%;
+		transform: translateY(-40%);
 	}
 	#diagnosis-text{
 		padding: 14px 10px 30px;
-		color:#333333;
+		color: $_darkblue;
 		font-size: 1.5rem;
 		font-family: 'Open Sans', sans-serif;
 		text-align:center;
-		margin:0px;
+		//margin:0px;
+		transform: translateY(-20%);
+		
 	}
+}
+
+.actions{
+	border-top: 1px solid black;
+	padding: 20px;
+	background-color: #f4f4f4;
+	//transform: translateY(-25%);
 }
 
 .link{
 	text-align: center;
 	height: 70px;
+	
+
+	button{
+		width: 230px;
+		height: 60px;
+		border-radius: 12px;
+		border: 0px solid blue;
+		background-color: #364F6B;
+		color: white;
+		font-size: 2rem;
+		font-family: 'Open Sans', sans-serif;
+
+	}
 }
+
+
 
 .flex{
 	display: flex;
 	justify-content: space-around;
+	//transform: translateY(-30%);
+	color: $_darkblue;
+	font-size: 1.5rem;
+	font-family: 'Open Sans', sans-serif;
 	div{
 		text-align: center;
+		img{
+			width: 55px;
+			height: 55px;
+		}
 	}
 }

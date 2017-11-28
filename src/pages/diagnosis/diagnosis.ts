@@ -46,10 +46,10 @@ export class DiagnosisPage {
 
 	shareMe(){
 		var options = {
-			message: 'share this', // not supported on some apps (Facebook, Instagram)
+			message: `${this.text} Here is the url to the photo: ${this.imageSRC}`, // not supported on some apps (Facebook, Instagram)
 			subject: 'the subject', // fi. for email
 			//files: ['', ''], // an array of filenames either locally or remotely
-			//url: 'https://www.website.com/foo/#bar?a=b',
+			//url: `${this.imageSRC}`,
 			chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
 		  } 
 

@@ -138,7 +138,6 @@ export class SelectColorPage {
 
 	onClickCamera() {
 		this.flashToast();
-
 	}
 
 	onClickUpload() {
@@ -189,8 +188,6 @@ export class SelectColorPage {
 
 		toast.present();
 
-
-
 		toast.onDidDismiss(() => {
 			if (this.navCtrl.getActive().component.name == "SelectColorPage") {
 				this.takePicture();
@@ -200,7 +197,7 @@ export class SelectColorPage {
 
 	analyzeToast() {
 		let toast = this.toastCtrl.create({
-			message: 'Analyzing your image...',
+			message: 'Analyzing your image...Please wait',
 			duration: 3000,
 			position: 'top'
 		});
