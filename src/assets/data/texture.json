@@ -32,7 +32,7 @@
 		"options": {
 			"yes": {
 				"type":"answer",
-				"response":"Uh Oh! All good! Baby's first stool, within the first days of life, called meconium, rids a newborn body of all of the materials swallowed in utero: amniotic fluid, intestinal epithelial cells, lanugo, mucus, bils and water. (If you don't see it within 48 hours, mention it to your pediatrician.) It's very sticky. You may need an entire tub of wipes for this one. ",
+				"response":"All good! Baby's first stool, within the first days of life, called meconium, rids a newborn body of all of the materials swallowed in utero: amniotic fluid, intestinal epithelial cells, lanugo, mucus, bils and water. (If you don't see it within 48 hours, mention it to your pediatrician.) It's very sticky. You may need an entire tub of wipes for this one. ",
 				"severity":"Green"
 			},
 			"no": {
