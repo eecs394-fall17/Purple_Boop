@@ -9,7 +9,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Crop } from '@ionic-native/crop';
 import { storage, initializeApp } from 'firebase';
 import { environment } from '../../environments/environment';
-import { ToastController } from 'ionic-angular';
+import { ToastController, AlertController } from 'ionic-angular';
 
 
 import * as _ from 'lodash';
@@ -54,7 +54,7 @@ export class SelectColorPage {
 	}
 
 
-	constructor(public navCtrl: NavController, public db: AngularFireDatabase, private camera: Camera, private toastCtrl: ToastController) {
+	constructor(public navCtrl: NavController, public db: AngularFireDatabase, private camera: Camera, private toastCtrl: ToastController, private alertCtrl: AlertController) {
 		db.list<any>('/Colors').valueChanges().subscribe(_rawcolors => {
 			this.colors = _.sortBy(_rawcolors, "no");
 			//console.log("this.colors is: ", this.colors);
@@ -138,7 +138,6 @@ export class SelectColorPage {
 
 	onClickCamera() {
 		this.flashToast();
-
 	}
 
 	onClickUpload() {
@@ -180,27 +179,26 @@ export class SelectColorPage {
 	}
 
 	flashToast() {
-		let toast = this.toastCtrl.create({
+		let alert = this.alertCtrl.create({
 			message: 'Please turn on flash for best the results',
-			position: 'top',
-			showCloseButton: true,
-			closeButtonText: "OK",
+			buttons: [
+				{
+				  text: 'Okay',
+				  handler: () => {
+					this.takePicture();
+				  }
+				}
+			  ]
 		});
 
-		toast.present();
-
-
-
-		toast.onDidDismiss(() => {
-			if (this.navCtrl.getActive().component.name == "SelectColorPage") {
-				this.takePicture();
-			};
-		});
+		alert.present();
+		
+		
 	}
 
 	analyzeToast() {
 		let toast = this.toastCtrl.create({
-			message: 'Analyzing your image...',
+			message: 'Analyzing your image...Please wait',
 			duration: 3000,
 			position: 'top'
 		});
