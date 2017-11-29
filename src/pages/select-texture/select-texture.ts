@@ -47,15 +47,18 @@ export class SelectTexturePage {
 		this.textServ.getData().subscribe((data) => {
 		  this.textureJsonData = data;
 		  this.currentJson=this.textureJsonData[this.selectedColor.name]
-		  this.extractInfo();
+		  this.extractInfo(this.currentJson);
 		});
 	}
 
 	onClick(outcome){
 		this.pageNumber+=1;
 		this.path.concat([outcome]);
-		this.currentJson = this.currentJson["options"][outcome]
-		this.extractInfo();
+		let _c = this.currentJson["options"][outcome]
+		let _nextPageIsQ = this.extractInfo(_c);
+		if(_nextPageIsQ){
+			this.currentJson = _c;
+		}
 	}
 
 	goBack(){
@@ -67,16 +70,18 @@ export class SelectTexturePage {
 		}
 		this.currentJson = _c;
 		this.pageNumber=_p;
-		this.extractInfo();
+		this.extractInfo(_c);
 	}
 	
-	extractInfo(){
-		if(this.currentJson["type"]=="question"){
-			this.currentQuestion=this.currentJson["response"];
+	extractInfo(_json){
+		if(_json["type"]=="question"){
+			this.currentQuestion= _json["response"];
+			return true;
 		}
 		else{
-			this.diagnosisJson=this.currentJson
+			this.diagnosisJson= _json
 			this.moveToNextPage();
+			return false;
 		}
 	}
 
