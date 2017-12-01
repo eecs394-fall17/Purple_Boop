@@ -200,7 +200,7 @@ export class SelectColorPage {
 		let toast = this.toastCtrl.create({
 			message: 'Analyzing your image...Please wait',
 			duration: 3000,
-			position: 'top'
+			position: 'middle'
 		});
 
 		toast.present();
@@ -210,7 +210,7 @@ export class SelectColorPage {
 		let toast = this.toastCtrl.create({
 			message: 'Uh oh, something went wrong. Please try again.',
 			duration: 3000,
-			position: 'top'
+			position: 'middle'
 		});
 
 		toast.present();
