@@ -1,26 +1,32 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+Boop -- Decipher the diaper!
+====================================
 
-## How to use this template
+## DESCRIPTION
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+Boop is a simple app that allows the user to input information about a baby's dirty diaper and retrieve analysis as to the baby's health.
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+The user may input data by: 
+* Selecting the diaper color from a collection of Swatches
+* Taking a photo of the dirty diaper
+* Uploading photo of the dirty diaper
 
-### With the Ionic CLI:
+This will then be analyzed according to its dominant color and then a series of questions may be asked to determine all other information needed to give a diagnosis.
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+## SYSTEM REQUIREMENTS
+
+- Angular 4
+- Ionic 4
+
+## INSTALLATION & RUNNING
+
+Simply download the repository, and CD into it via the Terminal or the Command Prompt, and then install the app's dependencied by running
 
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
+$ [sudo] npm install
 ```
 
-Then, to run it, cd into `mySideMenu` and run:
+Once that is done, you may treat the app as a typical Ionic app. To deploy it in a browser on your localhost simply run: 
 
 ```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+$ [sudo] ionic serve
 ```
-
-Substitute ios for android if not on a Mac.
-
