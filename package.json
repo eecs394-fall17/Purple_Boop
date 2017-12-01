@@ -24,7 +24,7 @@
     "@ionic-native/core": "4.3.2",
     "@ionic-native/crop": "^4.4.0",
     "@ionic-native/social-sharing": "^4.4.2",
-    "@ionic-native/splash-screen": "4.3.2",
+    "@ionic-native/splash-screen": "^4.3.2",
     "@ionic-native/status-bar": "4.3.2",
     "@ionic/storage": "2.0.1",
     "angularfire2": "^5.0.0-rc.3",
