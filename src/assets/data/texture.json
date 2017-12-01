@@ -19,7 +19,7 @@
 					},
 					"no": {
 						"type":"answer",
-						"response":"All good! If there's nothing unusual about the texture, red color may be just a result of something specific in your baby's diet. If you're still breastfeeding, it may be a sign of a milk allergy. Mom should try to eliminate dairy and see if it changes. If baby is eating solid food, maybe the color can be linked to something like beets.",
+						"response":"All good!  If texture is normal, red color may be due to your baby's diet.  If you're still breastfeeding, it may be a sign of a milk allergy.  Mom should try eliminating dairy.  If baby is eating solid food, the color could link to beets.",
 						"severity":"Green"
 					}
 				}
@@ -32,7 +32,7 @@
 		"options": {
 			"yes": {
 				"type":"answer",
-				"response":"All good! Baby's first stool, within the first days of life, called meconium, rids a newborn body of all of the materials swallowed in utero: amniotic fluid, intestinal epithelial cells, lanugo, mucus, bils and water. (If you don't see it within 48 hours, mention it to your pediatrician.) It's very sticky. You may need an entire tub of wipes for this one. ",
+				"response":"All good!  Within first days of life, baby's initial stool is called meconium, rids newborn body of all materials swallowed in utero: amniotic fluid, intestinal epithelial cells, lanugo, mucus, bils, and water. (If not seen within 48 hours, mention it to your pediatrician.)  It's very sticky",
 				"severity":"Green"
 			},
 			"no": {
