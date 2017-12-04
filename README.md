@@ -12,10 +12,13 @@ The user may input data by:
 
 This will then be analyzed according to its dominant color and then a series of questions may be asked to determine all other information needed to give a diagnosis.
 
-## SYSTEM REQUIREMENTS
+## Check out the App
+Download the Ionic View app on the Play Store or App Store and enter d15819d3
 
+## SYSTEM REQUIREMENTS
+- Node and NPM
 - Angular 4
-- Ionic 4
+- Ionic 3
 
 ## INSTALLATION & RUNNING
 
